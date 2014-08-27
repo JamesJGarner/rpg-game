@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+{% with level_data=character.level_data %}
+<div class="xp-bar" data-width="{{ level_data.xp_percentage }}"></div>
+
+<div class="row">
+    <div class="large-12 columns">
+        <h1>{{ character.name }} <small>{{ character.type }}</small></h1>
+        <hr>
+    </div>
+    Todo: Match History - Gear - Spells - {{ level_data.current_level }} - {{ level_data.xp_percentage}}%
+</div>
+    <h2>Match History</h2>
+    {% for match in character.match_set.all  %}
+    <div class="large-12 columns">
+        {{ match.character }} vs {{ match.enemy }}    </div>
+    {% endfor %}
+    <script src="/static/js/countdown.min.js"></script>
+{% endwith %}
+{% endblock %}
+
+{% block js %}
+<script>
+$(function() {
+    $('.xp-bar').width($('.xp-bar').data('width') + '%');
+});
+</script>
+{% endblock %}

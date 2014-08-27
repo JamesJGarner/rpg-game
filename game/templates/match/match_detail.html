@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+{% block content %}
+<style type="text/css">
+span {
+border: 1px solid #333;
+padding: 9px;
+font-size: 9pt;
+margin: 15px;
+}
+.testlabel {
+background: #333;
+height: 247px;
+padding-top: 92px;
+font-size: 31pt;
+text-align: center;
+color: #ccc;
+width:100%;
+margin: 0;
+}
+
+input[type="radio"]:checked+label{
+    background: #222;
+
+}
+input[type="radio"] {
+    display: none;
+
+}
+input[type="radio"]+label {
+    margin: 0;
+}
+.xp-level {
+    float: left;
+margin-top: -16px;
+font-size: 8pt;
+color: #333;
+}
+.xp-level-right {
+    float: right;
+margin-top: -16px;
+font-size: 8pt;
+color: #333;
+}
+</style>
+
+{% if condition %}
+{% if condition == "win" %}
+    <center><h1>You Won!</h1></center>
+{% endif %}
+{% if condition == "loose" %}
+   <center> <h1>You lost!</h1></center>
+{% endif %}
+{% else %}
+<div class="row">
+    <div class="large-12 columns">
+        <div class="large-5 columns">
+            <h1>
+                {{ match.character }}
+                <small>{{ match.character_health }}</small>
+            </h1>
+        </div>
+
+        <div class="large-2 columns">
+            <center>
+                <h1><small>vs</small></h1>
+            </center>
+        </div>
+        <div class="large-5 columns">
+            <h1 class="right">
+                {{ match.enemy }}
+                <small>{{ match.enemy_health }}</small>
+            </h1>
+        </div>
+        <div class="large-5 columns">
+            <small class="xp-level">Level 1 - XP {{ match.character.xp }}</small>
+        </div>
+        <div class="large-5 columns">
+            <small class="xp-level-right">Level {{ match.enemy.level }} - XP </small>
+        </div>
+    </div>
+</div>
+<hr>
+
+<div class="row">
+    <div class="large-7 columns">
+        <form action="/match/{{ match.id }}/attack/" method="post">
+            {% csrf_token %}
+            {% for spell in spells %}
+                <div class="large-6 columns">
+                    <input type="radio" name="spell" value="{{ spell.id }}" id="{{ spell.name }}"><label for="{{ spell.name }}" class="testlabel">{{ spell.name }}</label>
+                </div>
+            {% endfor %}
+            <div class="large-12 columns left">
+                <hr>
+                <input type="submit" value="Attack" class="button">
+            </div>
+        </form>
+    </div>
+    <div class="large-5 columns">
+        <div class="panel">
+            <h3>History</h3>
+            <hr>
+            {% for attack in match.attack_set.all %}
+            <li>{{ match.character }} fired a {{ attack.spell }} spell at {{ match.enemy }} but he returned a {{ attack.enemy_return_spell }}</li>
+            {% endfor %}
+    </div>
+</div>
+{% endif %}
+{% endblock content %}

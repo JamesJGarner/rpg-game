@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="row">
+        <div class="large-12 columns">
+            <h1>Leaderboard</h1>
+            <hr>
+            <p>Here are the top 100 characters!</p>
+            {% for character in character_list %}
+                <p><a href="/character/{{ character.id }}">{{ character.name }}</a></p>
+            {% endfor %}
+        </div>
+    </dov>
+{% endblock content %}

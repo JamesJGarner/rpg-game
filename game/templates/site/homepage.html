@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row">
+    <div class="large-4 columns">
+        <div class="panel">
+            <h3>Your Characters</h3>
+            <hr>
+            <ul class="character-listing">
+                {% for character in characters %}
+                    <li><a href="/character/{{ character.id }}">{{ character.name }}</a> <small>{% with level_data=character.level_data %}Level {{ level_data.current_level }}{% endwith %}</small></li>
+                    <hr>
+                {% endfor %}
+                <li> <a href="/character/create/"><small>Create a character</small></a> </li>
+            </ul>
+        </div>
+    </div>
+    <div class="large-8 columns">
+        <h1>Your History</h1>
+        <p>Nothing to do here yet</p>
+        <a href="/match/">Go to matches</a> or <a href="/match/create">Create a match</a>
+    </div>
+</div>
+{% endblock content %}

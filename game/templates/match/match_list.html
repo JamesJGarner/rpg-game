@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row">
+    <h1>Matches</h1>
+    <p>All of the matches, these will be filtered to only yours soon</p>
+    {% for match in match_list  %}
+        <a href="/match/{{ match.id }}">{{ match.character }}</a>
+    {% endfor %}
+</div>
+{% endblock content %}

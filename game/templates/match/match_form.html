@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+ <div class="row">
+    <div class="large-4 columns">
+
+<style type="text/css">
+body:not(.loaded) #slider img {
+  display:none;
+}
+</style>
+<h1>Create match</h1>
+<hr>
+<form action="" method="post">
+{% csrf_token %}
+<p><label for="id_character">Character:</label> <select id="id_character" name="character">
+<option value="" selected="selected">---------</option>
+{% for character in characters %}
+<option value="{{ character.id }} ">{{ character.name }} - {% with level_data=character.level_data %}Level {{ level_data.current_level }}{% endwith %}</option>
+{% endfor %}
+</select></p>
+<label for="id_enemy">Enemy:</label>
+{{ form.enemy}}
+<input type="submit" value="Start Match" class="button">
+</form>&apos;
+
+
+</div>
+</div>
+{% endblock content %}

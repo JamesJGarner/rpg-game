@@ -1,0 +1,28 @@
+.panel {
+border-style: solid;
+border-width: 1px;
+border-color: #EBEBEB;
+margin-bottom: 1.25rem;
+padding: 1.25rem;
+background: rgba(0, 0, 0, 0);
+}
+.top-bar {
+    margin-bottom:20px;
+}
+.character-listing li {
+list-style: none;
+font-size: 18pt;
+padding: 1px 0;
+margin: 10px 0;
+}
+.character-listing {
+    margin: 0;
+}
+.xp-bar {
+    transition: width 550ms ease-out 650ms;
+    height: 5px;
+    width: 0;
+    margin-top:-20px;
+    margin-bottom:20px;
+    background: #AA7689;
+}
