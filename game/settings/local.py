@@ -10,7 +10,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'game',
         'USER': 'rpg-game',
-        'PASSWORD': '',
+        'PASSWORD': 'ladoftheday',
         'HOST': '',
         'PORT': '',
     }
