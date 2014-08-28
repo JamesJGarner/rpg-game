@@ -9,4 +9,6 @@ class Homepage(ListView):
         context = super(Homepage, self).get_context_data(**kwargs)
         if self.request.user.is_authenticated():
             context['characters'] = Character.objects.filter(user=self.request.user)
+        else:
+            pass
         return context
