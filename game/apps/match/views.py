@@ -2,7 +2,7 @@ from django.views.generic import CreateView, DetailView, ListView
 from django.views.generic.edit import ModelFormMixin
 from .models import Match, Attack
 from game.apps.characters.models import Character
-from game.app.enemy.models import Enemy
+from game.apps.enemies.models import Enemy
 from .forms import CreateMatch, AttackForm
 from .models import Spell
 from django.utils.timezone import now
