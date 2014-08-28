@@ -3,8 +3,7 @@ from django.views.generic.edit import ModelFormMixin
 from .models import Match, Attack
 from game.apps.characters.models import Character
 from .forms import CreateMatch, AttackForm
-from random import randrange
-from .models import Spell
+from .models import Spell, Enemy
 from django.utils.timezone import now
 from django.shortcuts import get_object_or_404
 from django.core.urlresolvers import reverse
@@ -18,6 +17,8 @@ class CreateMatch(CreateView):
     def get_context_data(self, **kwargs):
         context = super(CreateMatch, self).get_context_data(**kwargs)
         context['characters'] = Character.objects.filter(user=self.request.user)
+        context['enemys'] = Enemy.objects.all()
+        print context['enemys']
         return context
 
     def form_valid(self, form):

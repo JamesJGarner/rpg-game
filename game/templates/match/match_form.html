@@ -19,7 +19,12 @@ body:not(.loaded) #slider img {
 {% endfor %}
 </select></p>
 <label for="id_enemy">Enemy:</label>
-{{ form.enemy}}
+<select id="id_enemy" name="enemy">
+<option value="" selected="selected">---------</option>
+{% for enemy in enemys %}
+<option value="{{ enemy.id }} ">{{ enemy.name }} - Level {{ enemy.level }}</option>
+{% endfor %}
+</select>
 <input type="submit" value="Start Match" class="button">
 </form>&apos;
 

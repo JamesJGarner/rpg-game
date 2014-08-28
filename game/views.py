@@ -7,5 +7,6 @@ class Homepage(ListView):
 
     def get_context_data(self, **kwargs):
         context = super(Homepage, self).get_context_data(**kwargs)
-        context['characters'] = Character.objects.filter(user=self.request.user)
+        if self.request.user.is_authenticated():
+            context['characters'] = Character.objects.filter(user=self.request.user)
         return context

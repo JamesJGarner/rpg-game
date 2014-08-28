@@ -18,11 +18,16 @@ height: 247px;
 padding-top: 92px;
 font-size: 26pt;
 text-align: center;
+transition: background .25s ease-in-out;
+-moz-transition: background .25s ease-in-out;
+-webkit-transition: background .25s ease-in-out;
 color: #ccc;
 width:33%;
 margin-bottom: 4px !important;
 }
-
+.classlabel label:hover, label:active, input:hover+label, input:active+label {
+    background: #222;
+}
 </style>
     <div class="row">
         <div class="large-12 columns">
@@ -32,35 +37,24 @@ margin-bottom: 4px !important;
         <div class="large-12 columns left">
             <form action="" method="post">
                 {% csrf_token %}
-                <label for="id_type"><h3>Choose your class:</h3><hr></label>
+                <div class="large-4 columns">
+                                    <h3>Characters name: {% if form.name.errors %}<small class="error">Character with this name already exists</small>{% endif %}</h3>
+                </div>
+                <div class="large-8 columns">{{ form.name }}</div>
+                <hr>
+                <h3>Choose your class:</h3><hr>
                 {% for type in types %}
-                <input type="radio" name="classes" class="classes" value="{{ type.id }}" id="{{ type.name }}">
+                <input type="radio" name="type" class="classes" value="{{ type.id }}" id="{{ type.name }}">
                 <label for="{{ type.name }}" class="classlabel">{{ type.name }}</label>
                 {% endfor %}
 
                 <hr>
-                <h3>Name: {% if form.name.errors %}<small class="error">Character with this name already exists</small>{% endif %}</h3>
 
-                <hr>
-                <input type="submit" value="Submit" class="button small">
+                <input type="submit" value="Create Character" class="button large">
             </form>
         </div>
     </div>
 
-<form data-abide>
-  <div class="name-field">
-    <label>Your name <small>required</small>
-      <input type="text" required pattern="[a-zA-Z]+">
-    </label>
 
-  </div>
-  <div class="email-field">
-    <label>Email <small>required</small>
-      <input type="email" >
-    </label>
-    <small class="error">An email address is required.</small>
-  </div>
-  <button type="submit">Submit</button>
-</form>
 
 {% endblock %}

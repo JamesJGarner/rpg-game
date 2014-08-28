@@ -10,11 +10,15 @@
     </div>
     Todo: Match History - Gear - Spells - {{ level_data.current_level }} - {{ level_data.xp_percentage}}%
 </div>
+<div class="row">
+    <br>
     <h2>Match History</h2>
     {% for match in character.match_set.all  %}
     <div class="large-12 columns">
-        {{ match.character }} vs {{ match.enemy }}    </div>
+        {{ match.character }} vs {{ match.enemy }}
+    </div>
     {% endfor %}
+</div>
     <script src="/static/js/countdown.min.js"></script>
 {% endwith %}
 {% endblock %}
