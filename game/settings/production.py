@@ -40,6 +40,7 @@ INSTALLED_APPS = (
     'game.apps.characters',
     'game.apps.enemies',
     'game.apps.match',
+    'game.apps.userprofile',
 )
 
 MIDDLEWARE_CLASSES = (

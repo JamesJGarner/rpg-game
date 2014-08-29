@@ -8,6 +8,10 @@ from django.core.urlresolvers import reverse
 class CharacterLeaderboard(ListView):
     model = Character
 
+    def get_context_data(self, **kwargs):
+        context = super(CharacterLeaderboard, self).get_context_data(**kwargs)
+        context['character_list'] = Character.objects.all().order_by('-xp')[:100]
+        return context
 
 class CharacterDetail(DetailView):
     model = Character
