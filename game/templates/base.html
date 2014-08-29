@@ -20,17 +20,18 @@
 
       <section class="top-bar-section">
         <!-- Right Nav Section -->
+        {% if user.is_authenticated  %}
         <ul class="right">
           <li class="has-dropdown">
             <a href="#">Account</a>
             <ul class="dropdown">
-              <li><a href="#">First link in dropdown</a></li>
-              <li class="active"><a href="#">Active link in dropdown</a></li>
+              <li><a href="#">Options here soon</a></li>
             </ul>
           </li>
-          <li><a href="#">Logout</a></li>
+          <li><a href="/logout/">Logout</a></li>
         </ul>
       </section>
+      {% endif %}
     </nav>
     {% block content %}{% endblock %}
     <script src="/static/js/vendor/jquery.js"></script>

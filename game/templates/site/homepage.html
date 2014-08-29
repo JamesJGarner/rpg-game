@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
+{% if user.is_authenticated  %}
 <div class="row">
     <div class="large-4 columns">
         <div class="panel">
@@ -20,4 +21,14 @@
         <a href="/match/">Go to matches</a> or <a href="/match/create">Create a match</a>
     </div>
 </div>
-{% endblock content %}
+{% else %}
+<div class="row">
+    <div class="large-12 columns">
+        <div class="panel">
+            <h3>Welcome to the Alpha</h3>
+            <p>Currently you need to be invited to register. <a href="/login">Login</a></p>
+        </div>
+    </div>
+</div>
+{% endif %}
+{% endblock%}

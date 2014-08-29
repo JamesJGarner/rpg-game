@@ -9,12 +9,12 @@ margin: 15px;
 }
 .testlabel {
 background: #333;
-height: 247px;
-padding-top: 92px;
-font-size: 31pt;
+/* height: 247px; */
+padding: 10px;
+font-size: 22pt;
 text-align: center;
 color: #ccc;
-width:100%;
+width: 100%;
 margin: 0;
 }
 
@@ -41,7 +41,45 @@ margin-top: -16px;
 font-size: 8pt;
 color: #333;
 }
+
+.match {
+    float: left/;
+    height: 400px;
+    width:100%;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #EBEBEB;
+}
+.historybox {
+float: right;
+width: 200px;
+height: 358px;
+margin-top: 0px;
+overflow-y: scroll;
+}
+.spell_list {
+    list-style: none;
+    margin: 0;
+}
+.spell_list li {
+    width: 24%;
+    float:left;
+    margin: 0 1% 1% 0;
+}
+.disabled {
+   color: darkgrey;
+   background-color: grey;
+   cursor:auto
+}
+input.disabled[type="radio"]:checked+label {
+   color: darkgrey;
+   background-color: grey;
+   cursor:auto
+}
 </style>
+
 
 {% if condition %}
 {% if condition == "win" %}
@@ -72,38 +110,54 @@ color: #333;
             </h1>
         </div>
         <div class="large-5 columns">
-            <small class="xp-level">Level 1 - XP {{ match.character.xp }}</small>
+            <small class="xp-level">Level {% with level_data=match.character.level_data %}{{ level_data.current_level }} {% endwith %}</small>
         </div>
         <div class="large-5 columns">
-            <small class="xp-level-right">Level {{ match.enemy.level }} - XP </small>
+            <small class="xp-level-right">Level {{ match.enemy.level }} </small>
         </div>
     </div>
 </div>
 <hr>
-
 <div class="row">
-    <div class="large-7 columns">
+    <div class="large-12 columns">
+        <div class="match">
+            This is where the game takes place!
+        <div class="panel historybox">
+            <h3>History</h3>
+            <hr>
+            {% for attack in match.attack_set.all %}
+            <li>Sent {{ attack.damage_dealt }}, Took {{ attack.damage_taken }}</li>
+            {% endfor %}
+        </div>
+
+
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="large-12 columns">
         <form action="/match/{{ match.id }}/attack/" method="post">
             {% csrf_token %}
-            {% for spell in spells %}
-                <div class="large-6 columns">
-                    <input type="radio" name="spell" value="{{ spell.id }}" id="{{ spell.name }}"><label for="{{ spell.name }}" class="testlabel">{{ spell.name }}</label>
-                </div>
-            {% endfor %}
+            <ul class="spell_list">
+                {% for spell in spells %}
+                    <li>
+                        <input type="radio" name="spell" value="{{ spell.id }}" id="{{ spell.name }}"><label for="{{ spell.name }}" class="testlabel">{{ spell.name }}</label>
+                    </li>
+                {% endfor %}
+                    <li>
+                        <input type="radio" name="spell" value="{{ spell.id }}" id="{{ spell.name }}" class="disabled"><label for="{{ spell.name }}" class="testlabel disabled">Disabled Spell</label>
+                    </li>
+            </ul>
             <div class="large-12 columns left">
                 <hr>
-                <input type="submit" value="Attack" class="button">
+                <input type="submit" value="End Turn" class="button">
             </div>
         </form>
     </div>
     <div class="large-5 columns">
-        <div class="panel">
-            <h3>History</h3>
-            <hr>
-            {% for attack in match.attack_set.all %}
-            <li>{{ match.character }} fired a {{ attack.spell }} spell at {{ match.enemy }} but he returned a {{ attack.enemy_return_spell }}</li>
-            {% endfor %}
+
     </div>
-</div>
 {% endif %}
 {% endblock content %}
+{% block js %}
+{% endblock %}
