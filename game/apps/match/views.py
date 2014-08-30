@@ -37,13 +37,18 @@ class MatchDetail(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(MatchDetail, self).get_context_data(**kwargs)
-        context['spells'] = Spell.objects.filter(type=self.object.character.type)
+
+        context['spells'] = Spell.objects.filter(
+            type=self.object.character.type,
+            level_required=context['match'].character.level_data()['current_level'],
+        )
 
         match = get_object_or_404(
             Match,
             pk=self.kwargs.get('pk'),
-            character__user=self.request.user
+            character__user=self.request.user,
         )
+
         if self.object.enemy_health == 0:
             context['condition'] = "win"
         else:
@@ -83,30 +88,38 @@ class AttackForm(CreateView):
         attackform.enemy_return_spell = boss_spell
         character = match
         attackform.selected_spell = spell
-        if match.finished is False:
-            if match.character_health <= calculate_boss_damage(boss_spell, match):
-                match.character_health = 0
-                match.finished = True
-            else:
-                if match.enemy_health <= calculate_player_damage(character, spell):
-                    match.enemy_health = 0
-                    match.character.xp = match.character.xp + calculate_xp(match)
+
+        if spell.level_required <= match.character.level_data()['current_level'] and spell.type == match.character.type:
+            print spell.level_required
+            print match.character.level_data()['current_level']
+
+            if match.finished is False:
+                if match.character_health <= calculate_boss_damage(boss_spell, match):
+                    match.character_health = 0
                     match.finished = True
                 else:
-                    match.character_health = match.character_health - calculate_boss_damage(boss_spell, match)
-                    match.enemy_health = match.enemy_health - calculate_player_damage(character, spell)
+                    if match.enemy_health <= calculate_player_damage(character, spell):
+                        match.enemy_health = 0
+                        match.character.xp = match.character.xp + calculate_xp(match)
+                        match.finished = True
+                    else:
+                        match.character_health = match.character_health - calculate_boss_damage(boss_spell, match)
+                        match.enemy_health = match.enemy_health - calculate_player_damage(character, spell)
+            else:
+                return super(ModelFormMixin, self).form_valid(form)
+
+            attackform.damage_dealt = calculate_player_damage(match, spell)
+            attackform.damage_taken = calculate_boss_damage(boss_spell, match)
+
+            attackform.match = match
+            attackform.time = now()
+            match.save()
+            match.character.save()
+            self.object = attackform.save()
+
+            return super(ModelFormMixin, self).form_valid(form)
         else:
             return super(ModelFormMixin, self).form_valid(form)
-
-        attackform.damage_dealt = calculate_player_damage(match, spell)
-        attackform.damage_taken = calculate_boss_damage(boss_spell, match)
-
-        attackform.match = match
-        attackform.time = now()
-        match.save()
-        match.character.save()
-        self.object = attackform.save()
-        return super(ModelFormMixin, self).form_valid(form)
 
     def get_success_url(self):
         return reverse('match:detail', kwargs={'pk': self.kwargs['pk']})

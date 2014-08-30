@@ -78,6 +78,10 @@ input.disabled[type="radio"]:checked+label {
    background-color: grey;
    cursor:auto
 }
+.tooltip {
+margin-top:-103px;
+margin-left: 0px;
+}
 </style>
 
 
@@ -122,6 +126,7 @@ input.disabled[type="radio"]:checked+label {
     <div class="large-12 columns">
         <div class="match">
             This is where the game takes place!
+            <div class="tooltip">edit me</div>
         <div class="panel historybox">
             <h3>History</h3>
             <hr>
@@ -141,10 +146,14 @@ input.disabled[type="radio"]:checked+label {
             <ul class="spell_list">
                 {% for spell in spells %}
                     <li>
-                        <input type="radio" name="spell" value="{{ spell.id }}" id="{{ spell.name }}"><label for="{{ spell.name }}" class="testlabel">{{ spell.name }}</label>
+                        <a data-tooltip aria-haspopup="true" class="has-tip" title="Damage: {{ spell.damage }}
+                        Cooldown {{ spell.turn_cooldown }}">
+                        <input type="radio" name="spell" value="{{ spell.id }}" id="{{ spell.name }}"><label for="{{ spell.name }}" class="testlabel" required>{{ spell.name }}</label>
+                        </a>
                     </li>
                 {% endfor %}
                     <li>
+
                         <input type="radio" name="spell" value="{{ spell.id }}" id="{{ spell.name }}" class="disabled"><label for="{{ spell.name }}" class="testlabel disabled">Disabled Spell</label>
                     </li>
             </ul>

@@ -96,3 +96,10 @@ class Character(models.Model):
             'total_xp_required': final_level[1],
             'xp_percentage': (float(total_xp) / final_level[1]) * 100
         }
+
+    @models.permalink
+    def get_absolute_url(self):
+            return ("character:detail", (), {
+                "pk": self.pk
+            })
+

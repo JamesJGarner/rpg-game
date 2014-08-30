@@ -1,4 +1,5 @@
 <!doctype html>
+
 <html class="no-js" lang="en">
   <head>
     <meta charset="utf-8" />
@@ -12,7 +13,7 @@
     <nav class="top-bar" data-topbar role="navigation">
       <ul class="title-area">
         <li class="name">
-          <h1><a href="/">RPG Alpha</a></h1>
+          <h1><a href="{% block url %}{% endblock %}">RPG Alpha</a></h1>
         </li>
          <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
         <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
@@ -21,7 +22,14 @@
       <section class="top-bar-section">
         <!-- Right Nav Section -->
         {% if user.is_authenticated  %}
+        {% load my_characters %}
         <ul class="right">
+          <li class="has-dropdown">
+            <a href="#">Characters</a>
+            <ul class="dropdown">
+              {% my_characters %}
+            </ul>
+          </li>
           <li class="has-dropdown">
             <a href="#">Account</a>
             <ul class="dropdown">
@@ -36,6 +44,7 @@
     {% block content %}{% endblock %}
     <script src="/static/js/vendor/jquery.js"></script>
     <script src="/static/js/foundation.min.js"></script>
+    <script src="/static/js/foundation/foundation.tooltip.js"></script>
     <script>
       $(document).foundation();
     </script>

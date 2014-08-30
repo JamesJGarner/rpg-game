@@ -5,7 +5,7 @@
 
 <div class="row">
     <div class="large-12 columns">
-        <h1>{{ character.name }} <small>{{ character.type }}</small></h1>
+        <h1>{{ character.name }} <small>{{ character.type }}</small> <small><a href="/" class="right">Switch Character</a></small></h1>
         <hr>
     </div>
     Todo: Match History - Gear - Spells - {{ level_data.current_level }} - {{ level_data.xp_percentage}}%
@@ -29,4 +29,7 @@ $(function() {
     $('.xp-bar').width($('.xp-bar').data('width') + '%');
 });
 </script>
+{% endblock %}
+{% block url %}
+    {{ character.get_absolute_url }}
 {% endblock %}
