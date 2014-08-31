@@ -40,7 +40,7 @@ class MatchDetail(DetailView):
 
         context['spells'] = Spell.objects.filter(
             type=self.object.character.type,
-            level_required=context['match'].character.level_data()['current_level'],
+            level_required__lte=context['match'].character.level_data()['current_level'],
         )
 
         match = get_object_or_404(
