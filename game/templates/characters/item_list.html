@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="row">
+    <div class="large-12 columns">
+        <h1>Shop</h1>
+        {% for item in item_list %}
+            {{ item.name }}
+        {% endfor %}
+
+{% endblock %}
