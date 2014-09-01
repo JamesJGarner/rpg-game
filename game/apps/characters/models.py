@@ -103,3 +103,38 @@ class Character(models.Model):
                 "pk": self.pk
             })
 
+class Group(models.Model):
+    name = models.CharField(
+        max_length=200,
+        unique=True,
+    )
+    
+    def __unicode__(self)
+        return self.name
+    
+
+
+class Item(models.Model):
+    
+    name = models.CharField(
+        max_length=200,
+    )
+
+    group = models.ForeignKey(
+	    Group,
+    )
+
+    worth = models.DecimalField(
+	    decimal_places = 2,
+    )
+    
+    for_class = models.ForeignKey(
+	    Type,
+    )
+    
+    level_required = models.PositiveIntegerField(
+        max_length=200,
+    )
+
+    def __unicdoe__(self):
+        return self.name

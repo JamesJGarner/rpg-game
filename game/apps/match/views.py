@@ -89,6 +89,19 @@ class AttackForm(CreateView):
         character = match
         attackform.selected_spell = spell
 
+        #Attack spell cooldown
+        match.spell.turn_cooldown = cooldown
+        for attack in Attack.objects.all()[:cooldown]:
+            if attack = cooldown:
+                turn = turn + 1
+            
+            print turn
+            if turn == cooldown:
+                print "True"
+            else:
+                print "False"
+        
+        
         if spell.level_required <= match.character.level_data()['current_level'] and spell.type == match.character.type:
             print spell.level_required
             print match.character.level_data()['current_level']

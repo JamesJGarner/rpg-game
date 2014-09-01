@@ -1,10 +1,26 @@
 from django.views.generic import DetailView, CreateView, ListView
-from .models import Character, Type
+from .models import Character, Type, Item
 from .forms import CharacterCreate
 from django.views.generic.edit import ModelFormMixin
 from django.core.urlresolvers import reverse
 
 
+class ShopItems(ListView):
+    model = Item
+
+    def get_context_data(self, **kwargs):
+    context = super(ShopItmes, self).get_context_data(**kwargs)
+    
+    # Need to filter by Class(type)
+    context['item_list'] = Item.objects.all()
+    for item in context['item_list']:
+        if  self.request.user >= item.required_level:
+            pass
+        else:
+            context['insufficient'] = "Insufficient Level"
+    return context 
+    
+    
 class CharacterLeaderboard(ListView):
     model = Character
 
