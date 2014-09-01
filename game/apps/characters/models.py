@@ -121,7 +121,7 @@ class Item(models.Model):
     )
 
     group = models.ForeignKey(
-	    Group
+	    Group,
     )
 
     worth = models.DecimalField(
@@ -129,7 +129,11 @@ class Item(models.Model):
     )
     
     for_class = models.ForeignKey(
-	    Type
+	    Type,
+    )
+    
+    level_required = models.PositiveIntegerField(
+        max_length=200,
     )
 
     def __unicdoe__(self):
