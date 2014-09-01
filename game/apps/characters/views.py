@@ -1,8 +1,12 @@
 from django.views.generic import DetailView, CreateView, ListView
-from .models import Character, Type
+from .models import Character, Type, Item
 from .forms import CharacterCreate
 from django.views.generic.edit import ModelFormMixin
 from django.core.urlresolvers import reverse
+
+
+class ShopItems(ListView):
+    model = Item
 
 
 class CharacterLeaderboard(ListView):
