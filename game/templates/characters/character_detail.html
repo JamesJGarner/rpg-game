@@ -2,9 +2,22 @@
 {% block content %}
 {% with level_data=character.level_data %}
 <div class="xp-bar" data-width="{{ level_data.xp_percentage }}"></div>
-
 <div class="row">
-    <div class="large-12 columns">
+<div class="large-4 columns">
+        <div class="panel">
+            <h3>Match History</h3>
+            <hr>
+            <ul class="character-listing">
+            {% for match in character.match_set.all  %}
+
+                <li>{{ match.character }} vs {{ match.enemy }}</li>
+
+            {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    <div class="large-8 columns">
         <h1>{{ character.name }} <small>{{ character.type }}</small> <small><a href="/" class="right">Switch Character</a></small></h1>
         <hr>
     </div>
