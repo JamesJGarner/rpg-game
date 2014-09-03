@@ -126,7 +126,11 @@ class Item(models.Model):
 
     worth = models.DecimalField(
 	    decimal_places = 2,
+<<<<<<< HEAD
         max_digits=100,
+=======
+        max_digits = 100,
+>>>>>>> 91a17fa9f81ed82f73821b3d89e65eb9694a713b
     )
     
     for_class = models.ForeignKey(
@@ -137,5 +141,15 @@ class Item(models.Model):
         max_length=200,
     )
 
-    def __unicdoe__(self):
+    def __unicode__(self):
         return self.name
+
+
+class Character_Items(models.Model):
+    item = models.ForeignKey(
+        Item,
+    )
+    is_currently_equipped = models.BooleanField(
+        default=False,
+    )
+    
