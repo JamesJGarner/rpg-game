@@ -109,7 +109,7 @@ class Group(models.Model):
         unique=True,
     )
     
-    def __unicode__(self)
+    def __unicode__(self):
         return self.name
     
 
@@ -126,6 +126,7 @@ class Item(models.Model):
 
     worth = models.DecimalField(
 	    decimal_places = 2,
+        max_digits=100,
     )
     
     for_class = models.ForeignKey(

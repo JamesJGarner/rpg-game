@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Character, Type
+from .models import Character, Type, Item, Group
 
 
 class CharacterAdmin(admin.ModelAdmin):
@@ -12,3 +12,7 @@ class TypeAdmin(admin.ModelAdmin):
     pass
 
 admin.site.register(Type, TypeAdmin)
+
+admin.site.register(Item)
+
+admin.site.register(Group)

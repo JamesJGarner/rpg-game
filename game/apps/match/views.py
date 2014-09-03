@@ -89,22 +89,23 @@ class AttackForm(CreateView):
         character = match
         attackform.selected_spell = spell
 
-        #Attack spell cooldown
-        match.spell.turn_cooldown = cooldown
-        for attack in Attack.objects.all()[:cooldown]:
-            if attack = cooldown:
-                turn = turn + 1
-            
-            print turn
-            if turn == cooldown:
-                print "True"
-            else:
-                print "False"
-        
-        
-        if spell.level_required <= match.character.level_data()['current_level'] and spell.type == match.character.type:
-            print spell.level_required
-            print match.character.level_data()['current_level']
+        cooldown = spell.turn_cooldown
+        turn = 0
+        attack_history_list = Attack.objects.filter(match=match).order_by('-time')[:cooldown]
+
+        if attack_history_list:
+            for attack_history in attack_history_list:
+                if attack_history.spell != spell and attack_history:
+                    if attack_history <= cooldown:
+                        turn = turn + 1
+                    else:
+                        turn = cooldown
+                else:
+                    pass
+        else:
+            turn = cooldown
+
+        if spell.level_required <= match.character.level_data()['current_level'] and spell.type == match.character.type and turn == cooldown:
 
             if match.finished is False:
                 if match.character_health <= calculate_boss_damage(boss_spell, match):

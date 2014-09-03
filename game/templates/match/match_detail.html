@@ -148,13 +148,13 @@ margin-left: 0px;
                     <li>
                         <a data-tooltip aria-haspopup="true" class="has-tip" title="Damage: {{ spell.damage }}
                         Cooldown {{ spell.turn_cooldown }}">
-                        <input type="radio" name="spell" value="{{ spell.id }}" id="{{ spell.name }}"><label for="{{ spell.name }}" class="testlabel" required>{{ spell.name }}</label>
+                        <input type="radio" name="spell" value="{{ spell.id }}" id="{{ spell.name }}{{ spell.id }}"><label for="{{ spell.name }}{{ spell.id }}" class="testlabel" required>{{ spell.name }}</label>
                         </a>
                     </li>
                 {% endfor %}
                     <li>
 
-                        <input type="radio" name="spell" value="{{ spell.id }}" id="{{ spell.name }}" class="disabled"><label for="{{ spell.name }}" class="testlabel disabled">Disabled Spell</label>
+                        <input type="radio" name="spell" value="{{ spell.id }}" id="{{ spell.name }}{{ spell.id }}" class="disabled"><label for="{{ spell.name }}{{ spell.id }}" class="testlabel disabled">Disabled Spell</label>
                     </li>
             </ul>
             <div class="large-12 columns left">
