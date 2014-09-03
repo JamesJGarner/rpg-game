@@ -136,7 +136,7 @@ class Item(models.Model):
         max_length=200,
     )
 
-    def __unicdoe__(self):
+    def __unicode__(self):
         return self.name
 
 
