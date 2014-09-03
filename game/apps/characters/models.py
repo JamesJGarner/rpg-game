@@ -109,7 +109,7 @@ class Group(models.Model):
         unique=True,
     )
     
-    def __unicode__(self)
+    def __unicode__(self):
         return self.name
     
 
