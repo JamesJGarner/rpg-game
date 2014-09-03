@@ -126,6 +126,7 @@ class Item(models.Model):
 
     worth = models.DecimalField(
 	    decimal_places = 2,
+        max_digits = 100,
     )
     
     for_class = models.ForeignKey(
