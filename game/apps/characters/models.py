@@ -138,3 +138,13 @@ class Item(models.Model):
 
     def __unicdoe__(self):
         return self.name
+
+
+class Character_Items(models.Model):
+    item = models.ForeignKey(
+        Item,
+    )
+    is_currently_equipped = models.BooleanField(
+        default=False,
+    )
+    
