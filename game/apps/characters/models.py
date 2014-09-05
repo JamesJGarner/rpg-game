@@ -108,14 +108,14 @@ class Group(models.Model):
         max_length=200,
         unique=True,
     )
-    
+
     def __unicode__(self):
         return self.name
-    
+
 
 
 class Item(models.Model):
-    
+
     name = models.CharField(
         max_length=200,
     )
@@ -126,17 +126,13 @@ class Item(models.Model):
 
     worth = models.DecimalField(
 	    decimal_places = 2,
-<<<<<<< HEAD
         max_digits=100,
-=======
-        max_digits = 100,
->>>>>>> 91a17fa9f81ed82f73821b3d89e65eb9694a713b
     )
-    
+
     for_class = models.ForeignKey(
 	    Type,
     )
-    
+
     level_required = models.PositiveIntegerField(
         max_length=200,
     )
@@ -152,4 +148,4 @@ class Character_Items(models.Model):
     is_currently_equipped = models.BooleanField(
         default=False,
     )
-    
+

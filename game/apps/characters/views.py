@@ -9,7 +9,6 @@ class ShopItems(ListView):
     model = Item
 
     def get_context_data(self, **kwargs):
-<<<<<<< HEAD
         context = super(ShopItems, self).get_context_data(**kwargs)
         # Need to filter by Class(type)
         context['item_list'] = Item.objects.all()
@@ -21,21 +20,6 @@ class ShopItems(ListView):
         return context
 
 
-=======
-        context = super(ShopItmes, self).get_context_data(**kwargs)
-        
-        # Need to filter by Class(type)
-        context['item_list'] = Item.objects.all()
-        for item in context['item_list']:
-            if  self.request.user >= item.required_level:
-                pass
-            else:
-                context['insufficient'] = "Insufficient Level"
-        return context 
-        
-    
-    
->>>>>>> 91a17fa9f81ed82f73821b3d89e65eb9694a713b
 class CharacterLeaderboard(ListView):
     model = Character
 
