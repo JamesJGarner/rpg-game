@@ -38,8 +38,8 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'south',
-    'game.apps.characters',
     'game.apps.enemies',
+    'game.apps.characters',
     'game.apps.match',
     'game.apps.userprofile',
 )

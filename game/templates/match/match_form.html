@@ -9,15 +9,10 @@ body:not(.loaded) #slider img {
 }
 </style>
 <h1>Create match</h1>
+{{ form.as_p }}
 <hr>
 <form action="" method="post">
 {% csrf_token %}
-<p><label for="id_character">Character:</label> <select id="id_character" name="character">
-<option value="" selected="selected">---------</option>
-{% for character in characters %}
-<option value="{{ character.id }} ">{{ character.name }} - {% with level_data=character.level_data %}Level {{ level_data.current_level }}{% endwith %}</option>
-{% endfor %}
-</select></p>
 <label for="id_enemy">Enemy:</label>
 <select id="id_enemy" name="enemy">
 <option value="" selected="selected">---------</option>
