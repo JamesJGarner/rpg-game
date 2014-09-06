@@ -7,29 +7,55 @@
         <div class="panel">
             <h3>Match History</h3>
             <hr>
-            <ul class="character-listing">
+            <ul class="history-listing">
             {% for match in character.match_set.all  %}
 
                 <li>{{ match.character }} vs {{ match.enemy }}</li>
 
             {% endfor %}
-            <li>{{ level_data.xp_percentage}}% Until Next Level</li>
+            <!-- <li>{{ level_data.xp_percentage}}% Until Next Level</li> -->
             </ul>
         </div>
     </div>
 
     <div class="large-8 columns">
         <h1>{{ character.name }} <small>{{ character.type }}</small>
-           
+
             <small><a href="/" class="right switch-char">Switch Character</a></small>
         </h1>
         <small class="level">Level {{ level_data.current_level }}</small>
         <hr>
     </div>
     <div class="large-8 columns">
-        <a href="/match/create">Start Match</a> -
-        <a href="/character/shop">View Shop</a> -
-        <a href="/character/{{ character.id }}/spells/">See Available Spells <small>not working atm</small></a>
+        <div class="panel clearfix">
+
+                <img src="/static/assets/character.png" class="left">
+
+            <h3 class="left inventory">Inventory</h3>
+
+            <ul class="left inv-item">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+
+        </div>
+        <a href="/character/{{ character.id }}/create" class="button small">Start Match</a>
+        <a href="/character/{{ character.id }}/shop/" class="button small">View Shop</a>
+        <a href="/character/{{ character.id }}/spells/" class="button small">See Available Spells</a>
 </div>
 
     <script src="/static/js/countdown.min.js"></script>

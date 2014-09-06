@@ -9,16 +9,48 @@ background: rgba(0, 0, 0, 0);
 .top-bar {
     margin-bottom:20px;
 }
-.character-listing li {
+.history-listing li {
 list-style: none;
-font-size: 18pt;
+font-size: 12pt;
 padding: 1px 0;
 margin: 10px 0;
 }
+.history-listing {
+margin: 0;
+height: 470px;
+overflow-y: auto;
+}
 .character-listing {
-    margin: 0;
+margin: 0;
+}
+.character-listing li {
+list-style: none;
+font-size: 17pt;
 }
 
+.map {
+  background: url('/static/assets/map-version1.png');
+  min-height: 700px;
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+.inv-item {
+  width: 290px;
+  margin: 0;
+  margin-top: 15px;
+}
+.inv-item li {
+list-style: none;
+float: left;
+padding: 30px;
+background: rgba(51, 51, 51, 0.05);
+margin: 8px 8px 0 0;
+}
+
+.inventory {
+  margin: 20px 0;
+
+}
 .shop-classes {
     height: 500px;
     width: 100%
@@ -159,7 +191,130 @@ a.expand {
   opacity: 1;
 }
 .img {
-    padding: 20px;
+padding: 20px;
 text-align: center;
 border: 1px solid #ccc;
+}
+
+/* Turn on custom 8px wide scrollbar */
+::-webkit-scrollbar {
+width: 8px; /* 1px wider than Lion. */
+/* This is more usable for users trying to click it. */
+background-color: rgba(0,0,0,0);
+-webkit-border-radius: 100px;
+}
+/* hover effect for both scrollbar area, and scrollbar 'thumb' */
+::-webkit-scrollbar:hover {
+background-color: rgba(0, 0, 0, 0.09);
+}
+
+/* The scrollbar 'thumb' ...that marque oval shape in a scrollbar */
+::-webkit-scrollbar-thumb:vertical {
+/* This is the EXACT color of Mac OS scrollbars.
+Yes, I pulled out digital color meter */
+background: rgba(0,0,0,0.5);
+-webkit-border-radius: 100px;
+}
+::-webkit-scrollbar-thumb:vertical:active {
+background: rgba(0,0,0,0.61); /* Some darker color when you click it */
+-webkit-border-radius: 100px;
+}
+
+background: linear-gradient(45deg, white, silver);
+min-height: 100%;
+
+span {
+border: 1px solid #333;
+padding: 9px;
+font-size: 9pt;
+margin: 15px;
+}
+.testlabel {
+background: #333;
+/* height: 247px; */
+padding: 10px;
+font-size: 22pt;
+text-align: center;
+color: #ccc;
+width: 100%;
+margin: 0;
+}
+
+
+
+.enemymap {
+background: rgba(51, 51, 51, 0.66);
+padding: 10px;
+font-size: 9pt;
+text-align: center;
+color: #FFF;
+padding: 20px;
+position: absolute;
+}
+
+
+
+input[type="radio"]:checked+label{
+background: #222;
+
+}
+input[type="radio"] {
+display: none;
+
+}
+input[type="radio"]+label {
+margin: 0;
+}
+.xp-level {
+float: left;
+margin-top: -16px;
+font-size: 8pt;
+color: #333;
+}
+.xp-level-right {
+float: right;
+margin-top: -16px;
+font-size: 8pt;
+color: #333;
+}
+
+.match {
+float: left;
+height: 400px;
+width:100%;
+padding: 20px;
+margin-bottom: 20px;
+border-style: solid;
+border-width: 1px;
+border-color: #EBEBEB;
+}
+.historybox {
+float: right;
+width: 200px;
+height: 358px;
+margin-top: 0px;
+overflow-y: scroll;
+}
+.spell_list {
+list-style: none;
+margin: 0;
+}
+.spell_list li {
+width: 24%;
+float:left;
+margin: 0 1% 1% 0;
+}
+.disabled {
+color: darkgrey;
+background-color: grey;
+cursor:auto
+}
+input.disabled[type="radio"]:checked+label {
+color: darkgrey;
+background-color: grey;
+cursor:auto
+}
+.tooltip {
+margin-top:-103px;
+margin-left: 0px;
 }

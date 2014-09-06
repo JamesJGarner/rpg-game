@@ -1,87 +1,8 @@
 {% extends "base.html" %}
+{% block url %}{{ match.character.get_absolute_url }}{% endblock %}
 {% block content %}
 <style type="text/css">
-span {
-border: 1px solid #333;
-padding: 9px;
-font-size: 9pt;
-margin: 15px;
-}
-.testlabel {
-background: #333;
-/* height: 247px; */
-padding: 10px;
-font-size: 22pt;
-text-align: center;
-color: #ccc;
-width: 100%;
-margin: 0;
-}
 
-input[type="radio"]:checked+label{
-    background: #222;
-
-}
-input[type="radio"] {
-    display: none;
-
-}
-input[type="radio"]+label {
-    margin: 0;
-}
-.xp-level {
-    float: left;
-margin-top: -16px;
-font-size: 8pt;
-color: #333;
-}
-.xp-level-right {
-    float: right;
-margin-top: -16px;
-font-size: 8pt;
-color: #333;
-}
-
-.match {
-    float: left/;
-    height: 400px;
-    width:100%;
-    padding: 20px;
-    margin-bottom: 20px;
-    border-style: solid;
-    border-width: 1px;
-    border-color: #EBEBEB;
-}
-.historybox {
-float: right;
-width: 200px;
-height: 358px;
-margin-top: 0px;
-overflow-y: scroll;
-}
-.spell_list {
-    list-style: none;
-    margin: 0;
-}
-.spell_list li {
-    width: 24%;
-    float:left;
-    margin: 0 1% 1% 0;
-}
-.disabled {
-   color: darkgrey;
-   background-color: grey;
-   cursor:auto
-}
-input.disabled[type="radio"]:checked+label {
-   color: darkgrey;
-   background-color: grey;
-   cursor:auto
-}
-.tooltip {
-margin-top:-103px;
-margin-left: 0px;
-}
 </style>
 
 
@@ -147,8 +68,9 @@ margin-left: 0px;
                 {% for spell in spells %}
                     <li>
                         <a data-tooltip aria-haspopup="true" class="has-tip" title="Damage: {{ spell.damage }}
-                        Cooldown {{ spell.turn_cooldown }}">
-                        <input type="radio" name="spell" value="{{ spell.id }}" id="{{ spell.name }}{{ spell.id }}"><label for="{{ spell.name }}{{ spell.id }}" class="testlabel" required>{{ spell.name }}</label>
+                        Cooldown {{ spell.turn_cooldown }} {{ spell.cooldown }}">
+                        <input type="radio" name="spell" value="{{ spell.id }}" id="{{ spell.name }}{{ spell.id }}">
+                        <label for="{{ spell.name }}{{ spell.id }}" class="testlabel" required>{{ spell.name }}</label>
                         </a>
                     </li>
                 {% endfor %}

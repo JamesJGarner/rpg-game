@@ -1,29 +1,24 @@
 {% extends "base.html" %}
+{% block url %}{{ character.get_absolute_url }}{% endblock %}
 {% block content %}
- <div class="row">
-    <div class="large-4 columns">
-
-<style type="text/css">
-body:not(.loaded) #slider img {
-  display:none;
-}
-</style>
-<h1>Create match</h1>
-{{ form.as_p }}
-<hr>
-<form action="" method="post">
-{% csrf_token %}
-<label for="id_enemy">Enemy:</label>
-<select id="id_enemy" name="enemy">
-<option value="" selected="selected">---------</option>
-{% for enemy in enemys %}
-<option value="{{ enemy.id }} ">{{ enemy.name }} - Level {{ enemy.level }}</option>
-{% endfor %}
-</select>
-<input type="submit" value="Start Match" class="button">
-</form>&apos;
-
-
-</div>
+<div class="row">
+    <div class="large-12 columns"><br><span class="right">You are playing as {{ character }}</span><br><hr></div>
+    <div class="large-12 columns">
+        <form action="" method="post">
+            <div class="panel map">
+                {% csrf_token %}
+                {% for enemy in enemys %}
+                    <li>
+                        <input type="radio" name="enemy" value="{{ enemy.id }}" id="{{ enemy.name }}{{ enemy.id }}">
+                        <label for="{{ enemy.name }}{{ enemy.id }}" class="enemymap" style="top: {{ enemy.top }}px; left: {{ enemy.left }}px" required>
+                            {{ enemy.name }} ({{ enemy.level }})
+                        </label>
+                    </li>
+                {% endfor %}
+            </div>
+            <hr>
+            <input type="submit" value="Start Match" class="button">
+        </form>
+    </div>
 </div>
 {% endblock content %}

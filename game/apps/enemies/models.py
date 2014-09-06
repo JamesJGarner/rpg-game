@@ -14,5 +14,13 @@ class Enemy(models.Model):
         default=100
         )
 
+    top = models.PositiveIntegerField(
+        max_length=16,
+        null=True,
+        )
+    left = models.PositiveIntegerField(
+        max_length=16,
+        null=True,
+    )
     def __unicode__(self):
         return self.name

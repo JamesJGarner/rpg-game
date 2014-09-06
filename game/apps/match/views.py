@@ -59,6 +59,23 @@ class MatchDetail(DetailView):
 
         context['match'] = match
 
+        cooldown = False
+
+        for spell in context['spells']:
+            attack_history_list = Attack.objects.filter(match=122).order_by('-time')[:spell.turn_cooldown]
+            print attack_history_list
+            for attack_history in attack_history_list:
+                if attack_history.spell == attack_history_list:
+                    cooldown = True
+                    print cooldown
+                    print attack_history.spell
+                    context['cooldown'] = cooldown
+                    break
+                else:
+                    cooldown = False
+                    print cooldown
+                    print attack_history.spell
+                    context['cooldown'] = cooldown
         return context
 
 
@@ -85,27 +102,21 @@ class AttackForm(CreateView):
         attackform = form.save(commit=False)
         match = Match.objects.get(id=self.kwargs['pk'])
         boss_spell = Spell.objects.filter(level_required__lte=match.enemy.level).order_by('?')[0]
+        character_level = match.character.level_data()['current_level']
         attackform.enemy_return_spell = boss_spell
         character = match
         attackform.selected_spell = spell
+        cooldown = False
+        attack_history_list = Attack.objects.filter(match=match).order_by('-time')[:spell.turn_cooldown]
 
-        cooldown = spell.turn_cooldown
-        turn = 0
-        attack_history_list = Attack.objects.filter(match=match).order_by('-time')[:cooldown]
+        for attack_history in attack_history_list:
+            if attack_history.spell == spell:
+                cooldown = True
+                break
+            else:
+                cooldown = False
 
-        if attack_history_list:
-            for attack_history in attack_history_list:
-                if attack_history.spell != spell and attack_history:
-                    if attack_history <= cooldown:
-                        turn = turn + 1
-                    else:
-                        turn = cooldown
-                else:
-                    pass
-        else:
-            turn = cooldown
-
-        if spell.level_required <= match.character.level_data()['current_level'] and spell.type == match.character.type and turn == cooldown:
+        if spell.level_required <= character_level and spell.type == match.character.type and cooldown == False:
 
             if match.finished is False:
                 if match.character_health <= calculate_boss_damage(boss_spell, match):

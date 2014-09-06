@@ -5,7 +5,7 @@ from game.apps.match.models import Match, Enemy
 from django.views.generic.edit import ModelFormMixin
 from django.core.urlresolvers import reverse
 from django.shortcuts import get_object_or_404
-from game.apps.match.helpers import calculate_player_damage, calculate_boss_damage, calculate_player_health,  calculate_boss_health, calculate_xp
+from game.apps.match.helpers import calculate_player_health, calculate_boss_health
 
 
 class ShopItems(ListView):
@@ -57,8 +57,8 @@ class CreateMatch(CreateView):
         boss = form.cleaned_data['enemy']
         Form.enemy_health = calculate_boss_health(boss)
         Form.resource = 1
-        character = Character.objects.get(user=1)
-
+        character = Character.objects.get(pk=self.kwargs['pk'])
+        Form.character = character
         Form.character_health = calculate_player_health(character)
         self.object = form.save()
         return super(ModelFormMixin, self).form_valid(form)
