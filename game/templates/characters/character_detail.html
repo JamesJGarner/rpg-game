@@ -34,7 +34,9 @@
             <h3 class="left inventory">Inventory</h3>
 
             <ul class="left inv-item">
-                <li></li>
+                {% for bag in character.character_items_set.all  %}
+                <li><img src="/media/{{ bag.item.image }}"></li>
+                {% endfor %}
                 <li></li>
                 <li></li>
                 <li></li>
@@ -51,7 +53,6 @@
                 <li></li>
                 <li></li>
             </ul>
-
         </div>
         <a href="/character/{{ character.id }}/create" class="button small">Start Match</a>
         <a href="/character/{{ character.id }}/shop/" class="button small">View Shop</a>

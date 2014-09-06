@@ -30,6 +30,7 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = (
+    'suit',
     'django.contrib.admin',
     'django.contrib.auth',
     'watson',
@@ -109,5 +110,6 @@ LOGIN_REDIRECT_URL = '/'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 STATIC_ROOT = '/var/www-static/rpg-game'
-
 STATIC_URL = '/static/'
+MEDIA_ROOT = '/var/www-media/rpg-game'
+MEDIA_URL = '/media/'

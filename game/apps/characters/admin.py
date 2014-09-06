@@ -1,9 +1,13 @@
 from django.contrib import admin
-from .models import Character, Type, Item, Group
+from .models import Character, Type, Item, Group, Character_Items
+
+
+class Character_Items(admin.TabularInline):
+    model = Character_Items
 
 
 class CharacterAdmin(admin.ModelAdmin):
-    pass
+    inlines = [Character_Items]
 
 admin.site.register(Character, CharacterAdmin)
 

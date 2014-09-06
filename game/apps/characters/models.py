@@ -120,12 +120,18 @@ class Item(models.Model):
         max_length=200,
     )
 
+    image = models.ImageField(
+        upload_to='items',
+        blank=True,
+        null=True,
+        )
+
     group = models.ForeignKey(
 	    Group,
     )
 
     worth = models.DecimalField(
-	    decimal_places = 2,
+	    decimal_places=2,
         max_digits=100,
     )
 
@@ -137,11 +143,31 @@ class Item(models.Model):
         max_length=200,
     )
 
+    damage = models.PositiveIntegerField(
+        max_length=200,
+        default=0,
+        null=True,
+    )
+
+    healing = models.PositiveIntegerField(
+        max_length=200,
+        default=0,
+        null=True,
+    )
+
+    armor = models.PositiveIntegerField(
+        max_length=200,
+        default=0,
+        null=True,
+    )
     def __unicode__(self):
         return self.name
 
 
 class Character_Items(models.Model):
+    character = models.ForeignKey(
+        Character
+        )
     item = models.ForeignKey(
         Item,
     )
