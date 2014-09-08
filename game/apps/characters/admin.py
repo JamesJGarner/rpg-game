@@ -1,22 +1,21 @@
 from django.contrib import admin
-from .models import Character, Type, Item, Group, Character_Items
+from .models import Character, Type, Item, Group, CharacterItem, InvBag
 
 
-class Character_Items(admin.TabularInline):
-    model = Character_Items
+
+class CharacterItem(admin.TabularInline):
+    model = CharacterItem
 
 
 class CharacterAdmin(admin.ModelAdmin):
-    inlines = [Character_Items]
+    inlines = [CharacterItem]
 
 admin.site.register(Character, CharacterAdmin)
 
-
-class TypeAdmin(admin.ModelAdmin):
-    pass
-
-admin.site.register(Type, TypeAdmin)
+admin.site.register(Type)
 
 admin.site.register(Item)
 
 admin.site.register(Group)
+
+admin.site.register(InvBag)

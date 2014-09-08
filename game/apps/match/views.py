@@ -119,17 +119,18 @@ class AttackForm(CreateView):
         if spell.level_required <= character_level and spell.type == match.character.type and cooldown == False:
 
             if match.finished is False:
-                if match.character_health <= calculate_boss_damage(boss_spell, match):
-                    match.character_health = 0
+                if match.enemy_health <= calculate_player_damage(character, spell):
+                    match.enemy_health = 0
+                    match.character.xp = match.character.xp + calculate_xp(match)
                     match.finished = True
                 else:
-                    if match.enemy_health <= calculate_player_damage(character, spell):
-                        match.enemy_health = 0
-                        match.character.xp = match.character.xp + calculate_xp(match)
+                    if match.character_health <= calculate_boss_damage(boss_spell, match):
+                        match.character_health = 0
                         match.finished = True
                     else:
-                        match.character_health = match.character_health - calculate_boss_damage(boss_spell, match)
                         match.enemy_health = match.enemy_health - calculate_player_damage(character, spell)
+                        match.character_health = match.character_health - calculate_boss_damage(boss_spell, match)
+
             else:
                 return super(ModelFormMixin, self).form_valid(form)
 

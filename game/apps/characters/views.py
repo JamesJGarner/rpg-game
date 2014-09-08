@@ -20,6 +20,7 @@ class ShopItems(ListView):
                 pass
             else:
                 context['insufficient'] = "Insufficient Level"
+
         return context
 
 

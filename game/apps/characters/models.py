@@ -1,5 +1,7 @@
 from django.contrib.auth.models import User
 from django.db import models
+from django.core.exceptions import ValidationError
+
 
 LEVELS = [
     (1, 200),
@@ -13,6 +15,29 @@ LEVELS = [
     (9, 1800),
     (10, 2000),
 ]
+
+
+class InvBag(models.Model):
+
+    name = models.CharField(
+        max_length=200,
+    )
+
+    level_required = models.PositiveIntegerField(
+        max_length=100
+        )
+
+    worth = models.DecimalField(
+        decimal_places=2,
+        max_digits=100,
+    )
+
+    spaces = models.PositiveIntegerField(
+        max_length=100,
+    )
+
+    def __unicode__(self):
+        return self.name
 
 
 class Type(models.Model):
@@ -61,7 +86,10 @@ class Character(models.Model):
     is_deleted = models.BooleanField(
         default=False,
         )
-
+    inv_bag = models.ForeignKey(
+        InvBag,
+        null=True,
+        )
     class Meta:
         ordering = ['name']
 
@@ -103,6 +131,7 @@ class Character(models.Model):
                 "pk": self.pk
             })
 
+
 class Group(models.Model):
     name = models.CharField(
         max_length=200,
@@ -113,11 +142,11 @@ class Group(models.Model):
         return self.name
 
 
-
 class Item(models.Model):
 
     name = models.CharField(
         max_length=200,
+        unique=True,
     )
 
     image = models.ImageField(
@@ -164,7 +193,7 @@ class Item(models.Model):
         return self.name
 
 
-class Character_Items(models.Model):
+class CharacterItem(models.Model):
     character = models.ForeignKey(
         Character
         )
@@ -174,4 +203,7 @@ class Character_Items(models.Model):
     is_currently_equipped = models.BooleanField(
         default=False,
     )
+
+    class Meta:
+        unique_together = (('item', 'is_currently_equipped'),)
 
