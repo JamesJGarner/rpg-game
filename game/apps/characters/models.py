@@ -88,6 +88,7 @@ class Character(models.Model):
     inv_bag = models.ForeignKey(
         InvBag,
         null=True,
+        blank=True,
         )
     class Meta:
         ordering = ['name']
