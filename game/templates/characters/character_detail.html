@@ -34,7 +34,7 @@
             <h3 class="left inventory">Inventory</h3>
 
             <ul class="left inv-item">
-                {% for bag in character.character_items_set.all  %}
+                {% for bag in character.characteritem_set.all  %}
                 <li><img src="/media/{{ bag.item.image }}"></li>
                 {% endfor %}
                 <li></li>
