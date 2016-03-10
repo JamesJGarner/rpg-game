@@ -108,6 +108,8 @@ class AttackForm(CreateView):
         attackform.selected_spell = spell
         cooldown = False
         attack_history_list = Attack.objects.filter(match=match).order_by('-time')[:spell.turn_cooldown]
+        player_damage = calculate_player_damage(character, spell)
+        boss_damage = calculate_boss_damage(boss_spell, match)
 
         for attack_history in attack_history_list:
             if attack_history.spell == spell:
@@ -119,23 +121,23 @@ class AttackForm(CreateView):
         if spell.level_required <= character_level and spell.type == match.character.type and cooldown == False:
 
             if match.finished is False:
-                if match.enemy_health <= calculate_player_damage(character, spell):
+                if match.enemy_health <= player_damage:
                     match.enemy_health = 0
-                    match.character.xp = match.character.xp + calculate_xp(match)
+                    match.character.xp += calculate_xp(match)
                     match.finished = True
                 else:
-                    if match.character_health <= calculate_boss_damage(boss_spell, match):
+                    if match.character_health <= boss_damage:
                         match.character_health = 0
                         match.finished = True
                     else:
-                        match.enemy_health = match.enemy_health - calculate_player_damage(character, spell)
-                        match.character_health = match.character_health - calculate_boss_damage(boss_spell, match)
+                        match.enemy_health -= player_damage
+                        match.character_health -= boss_damage
 
             else:
                 return super(ModelFormMixin, self).form_valid(form)
 
-            attackform.damage_dealt = calculate_player_damage(match, spell)
-            attackform.damage_taken = calculate_boss_damage(boss_spell, match)
+            attackform.damage_dealt = player_damage
+            attackform.damage_taken = boss_damage
 
             attackform.match = match
             attackform.time = now()
