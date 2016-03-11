@@ -27,6 +27,7 @@ class InvBag(models.Model):
 
     worth = models.DecimalField(
         decimal_places=2,
+        max_digits=100,
     )
 
     spaces = models.PositiveIntegerField(
@@ -156,6 +157,7 @@ class Item(models.Model):
 
     worth = models.DecimalField(
 	    decimal_places=2,
+        max_digits=100,
     )
 
     for_class = models.ForeignKey(
@@ -163,6 +165,7 @@ class Item(models.Model):
     )
 
     level_required = models.PositiveIntegerField(
+        max_length=200,
     )
 
     damage = models.PositiveIntegerField(
