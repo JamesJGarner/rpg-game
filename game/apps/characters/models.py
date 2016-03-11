@@ -23,16 +23,13 @@ class InvBag(models.Model):
     )
 
     level_required = models.PositiveIntegerField(
-        max_length=100
         )
 
     worth = models.DecimalField(
         decimal_places=2,
-        max_digits=100,
     )
 
     spaces = models.PositiveIntegerField(
-        max_length=100,
     )
 
     def __unicode__(self):
@@ -71,13 +68,11 @@ class Character(models.Model):
 
     # This will get removed / ignored when you have armor
     health = models.PositiveIntegerField(
-        max_length=16,
         default=100,
     )
 
     xp = models.PositiveIntegerField(
         "Current XP",
-        max_length=16,
         default=0,
         blank=True,
     )
@@ -161,7 +156,6 @@ class Item(models.Model):
 
     worth = models.DecimalField(
 	    decimal_places=2,
-        max_digits=100,
     )
 
     for_class = models.ForeignKey(
@@ -169,23 +163,19 @@ class Item(models.Model):
     )
 
     level_required = models.PositiveIntegerField(
-        max_length=200,
     )
 
     damage = models.PositiveIntegerField(
-        max_length=200,
         default=0,
         null=True,
     )
 
     healing = models.PositiveIntegerField(
-        max_length=200,
         default=0,
         null=True,
     )
 
     armor = models.PositiveIntegerField(
-        max_length=200,
         default=0,
         null=True,
     )
