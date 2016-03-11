@@ -165,7 +165,6 @@ class Item(models.Model):
     )
 
     level_required = models.PositiveIntegerField(
-        max_length=200,
     )
 
     damage = models.PositiveIntegerField(
