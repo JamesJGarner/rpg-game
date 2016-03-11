@@ -2,19 +2,12 @@ from django.contrib.auth.models import User
 from django.db import models
 
 
-LEVELS = [
-    (1, 200),
-    (2, 400),
-    (3, 600),
-    (4, 800),
-    (5, 1000),
-    (6, 1200),
-    (7, 1400),
-    (8, 1600),
-    (9, 1800),
-    (10, 2000),
-]
-
+def LEVELS():
+    level = 1
+    while True:
+        yield (level, level*200)
+        level += 1
+        
 
 class InvBag(models.Model):
 
@@ -95,7 +88,7 @@ class Character(models.Model):
     def level_data(self):
         total_xp = self.xp
 
-        for level in LEVELS:
+        for level in LEVELS():
             # Subtract the amount of XP required to leave this level from the
             # total XP. This will determine whether we're still on this level
             # or not.
