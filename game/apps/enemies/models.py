@@ -6,20 +6,16 @@ class Enemy(models.Model):
         max_length=150,
         )
     level = models.PositiveIntegerField(
-        max_length=16,
         default=1
         )
     health = models.PositiveIntegerField(
-        max_length=16,
         default=100
         )
 
     top = models.PositiveIntegerField(
-        max_length=16,
         null=True,
         )
     left = models.PositiveIntegerField(
-        max_length=16,
         null=True,
     )
     def __unicode__(self):
