@@ -1,4 +1,4 @@
-from django.conf.urls import patterns, include, url
+from django.conf.urls import include, url
 from .views import Homepage
 from game.apps.characters.views import CharacterLeaderboard
 from django.contrib import admin
