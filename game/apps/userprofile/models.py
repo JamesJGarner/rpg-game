@@ -12,7 +12,7 @@ class UserProfile(models.Model):
         return self.user.email
 
 User.profile = property(lambda u: UserProfile.objects.get_or_create(user=u)[0])
-watson.register(UserProfile)
+#watson.register(UserProfile)
 
 
 def create_profile(sender, **kw):
