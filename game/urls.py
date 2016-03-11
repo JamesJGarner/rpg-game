@@ -4,7 +4,7 @@ from game.apps.characters.views import CharacterLeaderboard
 from django.contrib import admin
 admin.autodiscover()
 
-urlpatterns = patterns('',
+urlpatterns = [
     url(r'^match/', include('game.apps.match.urls',  namespace="match")),
     url(r'^character/', include('game.apps.characters.urls', namespace="character")),
     url(r'^admin/', include(admin.site.urls)),
@@ -12,4 +12,4 @@ urlpatterns = patterns('',
     url(r'^login/$', 'django.contrib.auth.views.login', name='login'),
     url(r'^leaderboard/$', CharacterLeaderboard.as_view(), name="leaderbaord"),
     url(r'^logout/$', 'django.contrib.auth.views.logout', name='logout'),
-)
+]
