@@ -15,18 +15,15 @@ class Match(models.Model):
 
     character_health = models.PositiveIntegerField(
         "Current Character Health",
-        max_length=16,
         blank=True,
         )
 
     enemy_health = models.PositiveIntegerField(
         "Current Enemy Health",
-        max_length=16,
         blank=True,
         )
 
     resource = models.PositiveIntegerField(
-        max_length=200,
         default=1,
         )
 
@@ -61,16 +58,13 @@ class Spell(models.Model):
         )
 
     damage = models.PositiveIntegerField(
-        max_length=15,
         )
 
     level_required = models.PositiveIntegerField(
-        max_length=15,
         null=True,
         )
 
     turn_cooldown = models.PositiveIntegerField(
-        max_length=200,
         )
 
     def __unicode__(self):
@@ -94,12 +88,10 @@ class Attack(models.Model):
         )
 
     damage_dealt = models.PositiveIntegerField(
-        max_length=200,
         null=True,
         )
 
     damage_taken = models.PositiveIntegerField(
-        max_length=200,
         null=True,
         )
 
