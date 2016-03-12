@@ -2,6 +2,10 @@
 {% block content %}
 <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
 <style type="text/css">
+input#id_name:focus {
+    background: none;
+    border-color: #B9B9B9;
+}
 input.classes {
 display: none;
 }
@@ -63,12 +67,14 @@ input#id_name {
     <div class="large-12 columns left">
         <form action="" method="post">
             {% csrf_token %}
-            {% if form.name.errors %}<small class="error">Character with this name already exists</small>{% endif %}
-            <input id="id_name" maxlength="150" name="name" placeholder="Name..." type="text">
+            
+            <input id="id_name" maxlength="150" name="name" placeholder="Name..." type="text" required>
+            {{ form.errors.name }}
             {% for type in types %}
                 <input type="radio" name="type" class="classes" value="{{ type.id }}" id="{{ type.name }}">
                 <label for="{{ type.name }}" class="classlabel"><img src="/static/img/warlord.png">{{ type.name }}</label>
             {% endfor %}
+            {{ form.errors.type }}
             <hr>
             <input type="submit" value="Create" class="button darkblack">
         </form>
