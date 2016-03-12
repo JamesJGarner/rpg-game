@@ -38,11 +38,14 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     "django.contrib.humanize",
     "watson",
+    "compressor",
     'game.apps.enemies',
     'game.apps.characters',
     'game.apps.match',
     'game.apps.userprofile',
 ]
+
+STATIC_ROOT = "/var/www/game/static"
 
 MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',
