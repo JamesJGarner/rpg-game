@@ -1,6 +1,6 @@
 input#id_name:focus {
     background: none;
-    border-color: #B9B9B9;
+
 }
 input.classes {
 display: none;
@@ -21,31 +21,35 @@ input.classes[type="radio"]+label {
 }
 
 input#id_name {
+    color:#FFF;
+    background: none;
     border: 0;
     box-shadow: none;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.18);
     font-size: 21pt;
     font-family: 'Open Sans';
     font-weight: 300;
     float: left;
     padding: 30px 5px;
+    margin-bottom: 25px;
 }
 .classlabel {
     /* height: 247px; */
-    border: 1px solid #ddd;
+    background: #222;
+    border: none;
+    color: #FFF;
     font-size: 15pt;
     text-align: center;
     transition: background .25s ease-in-out;
     -moz-transition: background .25s ease-in-out;
     -webkit-transition: background .25s ease-in-out;
-    color: #ccc;
+    color: #FFF;
     width: 200px;
     margin-bottom: 4px !important;
     padding: 20px;
     font-family: 'open sans';
     font-weight: 300;
     font-size: 20pt;
-    color: #333;
     /* text-transform: uppercase; */
 }
 .classlabel label:hover, label:active, input:hover+label, input:active+label {
@@ -53,5 +57,18 @@ input#id_name {
 }
 
 .darkblack {
-    background: #333;
+    background: rgb(66, 66, 66);
+    color: #FFF;
+}
+
+h2 {
+    color:#FFF;
+}
+
+hr {
+    border: solid rgba(255, 255, 255, 0.18);
+    border-width: 1px 0 0;
+    clear: both;
+    margin: 1.25rem 0 1.1875rem;
+    height: 0;
 }
