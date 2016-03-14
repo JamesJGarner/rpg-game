@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
+<link href='https://fonts.googleapis.com/css?family=Shadows+Into+Light' rel='stylesheet' type='text/css'>
 {% with level_data=character.level_data %}
 <div class="xp-bar" data-width="{{ level_data.xp_percentage }}"></div>
 <div class="row">
@@ -19,11 +20,11 @@
     </div>
 
     <div class="large-8 columns">
-        <h1>{{ character.name }} <small>{{ character.type }}</small>
+    <center><p>{{ level_data.current_level }} {{ character.type }}</p></center>
+        <h2>{{ character.name }}</h2>
 
             <small><a href="/" class="right switch-char">Switch Character</a></small>
         </h1>
-        <small class="level">Level {{ level_data.current_level }}</small>
         <hr>
     </div>
     <div class="large-8 columns">
@@ -37,21 +38,80 @@
                 {% for bag in character.characteritem_set.all  %}
                 <li><img src="/media/{{ bag.item.image }}"></li>
                 {% endfor %}
+<ul class="left inv-item" style="
+    min-height: 350px;
+    float: left;
+    width: 100%;
+">
+                
+                <li style="
+    left: 50%;
+"></li>
+                <li style="
+    left: 40%;
+    top: 63px;
+    width: 40px;
+    height: 40px;
+"></li>
+                <li style="
+    left: 37%;
+    top: 123px;
+    width: 55px;
+    height: 101px;
+"></li>
+                <li style="
+    left: 37%;
+    top: 237px;
+    width: 55px;
+    height: 80px;
+"></li>
+                <li style="
+    left: 48%;
+    top: 72px;
+    width: 79px;
+    height: 115px;
+"></li>
+                <li style="
+    left: 48%;
+    top: 195px;
+    width: 79px;
+    height: 30px;
+"></li>
+                <li style="
+    left: 49%;
+    top: 238px;
+    width: 66px;
+    height: 100px;
+"></li>
+                <li style="
+    left: 49%;
+    top: 350px;
+    width: 66px;
+    height: 100px;
+"></li>
+                <li style="
+    left: 62%;
+    top: 63px;
+    width: 40px;
+    height: 40px;
+"></li>
+                <li style="
+    left: 62%;
+    top: 123px;
+    width: 55px;
+    height: 101px;
+"></li>
+                <li style="
+    left: 62%;
+    top: 237px;
+    width: 55px;
+    height: 80px;
+"></li>
                 <li></li>
                 <li></li>
                 <li></li>
                 <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
+            </ul>
             </ul>
         </div>
         <a href="/character/{{ character.id }}/create" class="button small">Start Match</a>
