@@ -47,9 +47,9 @@
             </ul>
             </div>
         </div>
-        <a href="/character/{{ character.id }}/create" class="button small">Start Match</a>
-        <a href="/character/{{ character.id }}/shop/" class="button small">View Shop</a>
-        <a href="/character/{{ character.id }}/spells/" class="button small">See Available Spells</a>
+        <a href="{{ character.get_absolute_url }}/create" class="button small">Start Match</a>
+        <a href="{{ character.get_absolute_url }}/shop/" class="button small right">Shop</a>
+        <a href="{{ character.get_absolute_url }}/spells/" class="button small right">Spell Book</a>
 </div>
 
     <script src="/static/js/countdown.min.js"></script>

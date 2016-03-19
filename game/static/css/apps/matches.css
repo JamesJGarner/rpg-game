@@ -1,0 +1,30 @@
+/* Create View */
+
+.map {
+	background: url('/static/assets/map-version1.png');
+	min-height: 550px;
+	background-size: 100%;
+	background-repeat: no-repeat;
+	list-style: none;
+	float:left;
+	width:100%;
+	margin:10px 0;
+}
+
+.map li label {
+	background: rgba(51, 51, 51, 0.66);
+	padding: 10px;
+	font-size: 9pt;
+	text-align: center;
+	color: #FFF;
+	padding: 20px;
+	position: absolute;
+}
+
+.map li input[type="radio"]:checked+label{
+	background: #222;
+}
+
+.map li input[type="radio"] {
+	display: none;
+}
