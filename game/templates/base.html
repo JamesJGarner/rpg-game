@@ -25,9 +25,9 @@
 
       <section class="top-bar-section">
         {% if user.is_authenticated %}
+          <ul class="right">
           {% block navigation %}
           {% load my_characters %}
-          <ul class="right">
             <li class="has-dropdown">
               <a href="#">Your Characters</a>
               <ul class="dropdown">
@@ -39,11 +39,11 @@
               <a href="#">Account</a>
               <ul class="dropdown">
                 <li><a href="#">View Profile</a></li>
+                <li><a href="/logout/">Logout</a></li>
               </ul>
-            </li>
-            <li><a href="/logout/">Logout</a></li>
-          </ul>
+            </li>           
           {% endblock %}
+          </ul>
         {% endif %}
       </section>
       
