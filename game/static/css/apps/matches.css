@@ -28,3 +28,7 @@
 .map li input[type="radio"] {
 	display: none;
 }
+
+.md-heading h2 {
+	font-weight: 300;
+}
