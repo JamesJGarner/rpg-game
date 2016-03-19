@@ -84,7 +84,6 @@ input#cc-name:focus {
 }
 
 .cd-sidebar h3 {
-    font-family: 'Open Sans';
     text-align: center;
     padding: 22px;
     border-bottom: 1px solid #ddd;
@@ -104,7 +103,6 @@ input#cc-name:focus {
 .cd-main h2 {
     text-align: center;
     line-height: 81px;
-    font-family: 'Open Sans';
     font-weight: 100;
     border-bottom: 1px solid rgb(221, 221, 221);
     margin-bottom: 43px;
@@ -139,7 +137,6 @@ input#cc-name:focus {
 }
 
 .cd-inventory-bag h3 {
-    font-family: 'Open Sans';
     font-weight:300;
     border-bottom: 1px solid #ddd;
     padding-bottom:10px;
