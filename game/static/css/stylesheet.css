@@ -10,3 +10,11 @@ body {
 .top-bar-section li:not(.has-form) a:not(.button) {
   background-color: #000;
 }
+
+hr {
+    border: solid rgba(255, 255, 255, 0.18);
+    border-width: 1px 0 0;
+    clear: both;
+    margin: 1.25rem 0 1.1875rem;
+    height: 0;
+}
