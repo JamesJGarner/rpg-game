@@ -1,10 +1,6 @@
 {% extends "base.html" %}
 {% block url %}{{ match.character.get_absolute_url }}{% endblock %}
 {% block content %}
-<style type="text/css">
-
-</style>
-
 
 {% if condition %}
 {% if condition == "win" %}
@@ -13,7 +9,8 @@
 {% if condition == "loose" %}
    <center> <h1>You lost!</h1></center>
 {% endif %}
-{% else %}
+{% endif %}
+
 <div class="row">
     <div class="large-12 columns">
         <div class="large-5 columns">
@@ -88,7 +85,7 @@
     <div class="large-5 columns">
 
     </div>
-{% endif %}
+
 {% endblock content %}
 {% block js %}
 {% endblock %}
