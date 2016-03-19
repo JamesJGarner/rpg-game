@@ -19,18 +19,11 @@
     </div>
 
     <div class="large-8 columns">
-    <center><p>{{ level_data.current_level }} {{ character.type }}</p></center>
-        <h2>{{ character.name }}</h2>
-        </h1>
-        <hr>
-    </div>
-    <div class="large-8 columns">
         <div class="cd-main">
-
-                <img src="/static/assets/character.png" class="left">
-
+            <h2>{{ character.name }} <small>Level {{ level_data.current_level }} {{ character.type }}</small></h2>
+            <hr>
+            <img src="/static/assets/character.png" class="left">
             <h3 class="left inventory">Inventory</h3>
-
             <ul class="left inv-item">
                 {% for bag in character.characteritem_set.all  %}
                 <li><img src="/media/{{ bag.item.image }}"></li>
