@@ -13,6 +13,10 @@ background: rgba(0, 0, 0, 0);
 }
 .top-bar {
     margin-bottom:20px;
+    background-color: #000;
+}
+.top-bar-section li:not(.has-form) a:not(.button) {
+  background-color: #000;
 }
 .history-listing li {
 list-style: none;
