@@ -94,3 +94,9 @@ input#cc-name:focus {
     color:#000;
     list-style: none;
 }
+
+.cd-main {
+    float:left;
+    width:100%;
+    background :#FFF;
+}
