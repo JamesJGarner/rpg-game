@@ -79,11 +79,18 @@ input#cc-name:focus {
 .cd-sidebar {
     float:left;
     width:100%;
-    padding: 10px;
     background:#FFF;
     font-family: 'Open Sans';
 }
 
+.cd-sidebar h3 {
+    font-family: 'Open Sans';
+    text-align: center;
+    padding: 22px;
+    border-bottom: 1px solid #ddd;
+}
+
 .cd-sidebar ul li {
     color:#000;
+    list-style: none;
 }
