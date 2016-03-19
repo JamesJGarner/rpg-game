@@ -66,3 +66,24 @@ input#cc-name:focus {
 
 /* Detail View */
 
+.cd-xp-bar {
+    transition: width 550ms ease-out 650ms;
+    height: 5px;
+    width: 0;
+    margin-top:-20px;
+    margin-bottom:20px;
+    background: #AA7689;
+}
+
+
+.cd-sidebar {
+    float:left;
+    width:100%;
+    padding: 10px;
+    background:#000;
+    font-family: 'Open Sans';
+}
+
+.cd-sidebar ul li {
+    color:#FFF;
+}
