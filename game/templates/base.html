@@ -24,26 +24,29 @@
       </ul>
 
       <section class="top-bar-section">
-        {% if user.is_authenticated  %}
-        {% load my_characters %}
-        <ul class="right">
-          <li class="has-dropdown">
-            <a href="#">Your Characters</a>
-            <ul class="dropdown">
-              {% my_characters %}
-              <li><a href="/character/create/" class="active">Create Character</a></li>
-            </ul>
-          </li>
-          <li class="has-dropdown">
-            <a href="#">Account</a>
-            <ul class="dropdown">
-              <li><a href="#">Options here soon</a></li>
-            </ul>
-          </li>
-          <li><a href="/logout/">Logout</a></li>
-        </ul>
+        {% if user.is_authenticated %}
+          {% block navigation %}
+          {% load my_characters %}
+          <ul class="right">
+            <li class="has-dropdown">
+              <a href="#">Your Characters</a>
+              <ul class="dropdown">
+                {% my_characters %}
+                <li><a href="/character/create/" class="active">Create Character</a></li>
+              </ul>
+            </li>
+            <li class="has-dropdown">
+              <a href="#">Account</a>
+              <ul class="dropdown">
+                <li><a href="#">View Profile</a></li>
+              </ul>
+            </li>
+            <li><a href="/logout/">Logout</a></li>
+          </ul>
+          {% endblock %}
+        {% endif %}
       </section>
-      {% endif %}
+      
     </nav>
     {% block content %}{% endblock %}
     <script src="/static/js/vendor/jquery.js"></script>
