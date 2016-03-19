@@ -1,14 +1,18 @@
 body {
-    background: url("http://subtlepatterns2015.subtlepatterns.netdna-cdn.com/patterns/footer_lodyas.png");
+    background: #eee;
+}
+
+a {
+  color:#0078a0;
 }
 
 .top-bar {
     margin-bottom:20px;
-    background-color: #000;
+        background-color: #0078a0;
 }
 
 .top-bar-section li:not(.has-form) a:not(.button) {
-  background-color: #000;
+      background-color: #0078a0;
 }
 
 hr {

@@ -4,7 +4,7 @@
     text-align: center;
     font-family: 'Open Sans';
     font-weight: 300;
-    color:#FFF;
+    color:#000;
 }
 
 input.cc-type {
@@ -20,7 +20,7 @@ input.cc-type[type="radio"]+label {
 }
 
 input#cc-name {
-    color:#FFF;
+    color:#000;
     background: none;
     border: 0;
     box-shadow: none;
@@ -80,10 +80,10 @@ input#cc-name:focus {
     float:left;
     width:100%;
     padding: 10px;
-    background:#000;
+    background:#FFF;
     font-family: 'Open Sans';
 }
 
 .cd-sidebar ul li {
-    color:#FFF;
+    color:#000;
 }
