@@ -17,92 +17,35 @@
             </ul>
         </div>
     </div>
-
     <div class="large-8 columns">
         <div class="cd-main">
             <h2>{{ character.name }} <small>Level {{ level_data.current_level }} {{ character.type }}</small></h2>
-            <hr>
-            <img src="/static/assets/character.png" class="left">
-            <h3 class="left inventory">Inventory</h3>
-            <ul class="left inv-item">
+            <div class="large-6 columns">
+            <ul class="cd-character-items">
+                <li style="left: 40%; top: 63px; width: 40px; height: 40px;"></li>
+                <li style="left: 37%; top: 123px; width: 55px; height: 101px;"></li>
+                <li style="left: 37%; top: 237px; width: 55px; height: 80px;"></li>
+                <li style="left: 48%; top: 72px; width: 79px; height: 115px;"></li>
+                <li style="left: 48%; top: 195px; width: 79px; height: 30px;"></li>
+                <li style="left: 49%; top: 238px; width: 66px; height: 100px;"></li>
+                <li style="left: 49%; top: 350px; width: 66px; height: 100px;"></li>
+                <li style="left: 62%; top: 63px; width: 40px; height: 40px;"></li>
+                <li style="left: 62%; top: 123px; width: 55px; height: 101px;"></li>
+                <li style="left: 62%; top: 237px; width: 55px; height: 80px;"></li>
+            </ul>
+            </div>
+            <div class="large-6 columns">
+            <ul class="cd-inventory-bag">
+                <h3>Inventory</h3>
+                {% if  character.characteritem_set.all %}
                 {% for bag in character.characteritem_set.all  %}
-                <li><img src="/media/{{ bag.item.image }}"></li>
+            
                 {% endfor %}
-<ul class="left inv-item" style="
-    min-height: 350px;
-    float: left;
-    width: 100%;
-">
-                
-                <li style="
-    left: 50%;
-"></li>
-                <li style="
-    left: 40%;
-    top: 63px;
-    width: 40px;
-    height: 40px;
-"></li>
-                <li style="
-    left: 37%;
-    top: 123px;
-    width: 55px;
-    height: 101px;
-"></li>
-                <li style="
-    left: 37%;
-    top: 237px;
-    width: 55px;
-    height: 80px;
-"></li>
-                <li style="
-    left: 48%;
-    top: 72px;
-    width: 79px;
-    height: 115px;
-"></li>
-                <li style="
-    left: 48%;
-    top: 195px;
-    width: 79px;
-    height: 30px;
-"></li>
-                <li style="
-    left: 49%;
-    top: 238px;
-    width: 66px;
-    height: 100px;
-"></li>
-                <li style="
-    left: 49%;
-    top: 350px;
-    width: 66px;
-    height: 100px;
-"></li>
-                <li style="
-    left: 62%;
-    top: 63px;
-    width: 40px;
-    height: 40px;
-"></li>
-                <li style="
-    left: 62%;
-    top: 123px;
-    width: 55px;
-    height: 101px;
-"></li>
-                <li style="
-    left: 62%;
-    top: 237px;
-    width: 55px;
-    height: 80px;
-"></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
+                {% else %}
+                <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+                {% endif %}
             </ul>
-            </ul>
+            </div>
         </div>
         <a href="/character/{{ character.id }}/create" class="button small">Start Match</a>
         <a href="/character/{{ character.id }}/shop/" class="button small">View Shop</a>
