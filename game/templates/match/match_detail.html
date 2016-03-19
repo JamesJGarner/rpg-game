@@ -11,14 +11,12 @@
 {% endif %}
 {% endif %}
 
-<div clsass="md-heading">
+<div class="md-heading">
     <div class="row">
         <div class="large-12 columns">
             <div class="large-5 columns">
-                <h1>
-                    {{ match.character }}
-                    <small>{{ match.character_health }}</small>
-                </h1>
+                <h1>{{ match.character }} <small>{{ match.character_health }}</small></h1>
+                <small>Level {% with level_data=match.character.level_data %}{{ level_data.current_level }} {% endwith %}</small>
             </div>
 
             <div class="large-2 columns">
@@ -27,16 +25,14 @@
                 </center>
             </div>
             <div class="large-5 columns">
-                <h1 class="right">
-                    {{ match.enemy }}
-                    <small>{{ match.enemy_health }}</small>
-                </h1>
+                <h1>{{ match.enemy }} <small>{{ match.enemy_health }}</small></h1>
+                <small>Level {{ match.enemy.level }} </small>
             </div>
             <div class="large-5 columns">
-                <small class="xp-level">Level {% with level_data=match.character.level_data %}{{ level_data.current_level }} {% endwith %}</small>
+                
             </div>
             <div class="large-5 columns">
-                <small class="xp-level-right">Level {{ match.enemy.level }} </small>
+                
             </div>
         </div>
     </div>
