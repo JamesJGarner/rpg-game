@@ -111,7 +111,7 @@ input#cc-name:focus {
 .cd-character-items {
     list-style: none;
     float: left;
-    height: 300px;
+    height: 475px;
     border: 1px solid #eee;
     width: 100%;
     position: relative;
