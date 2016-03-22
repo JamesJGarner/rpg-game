@@ -1,5 +1,6 @@
 from django.contrib.auth.models import User
 from django.db import models
+from django.core.exceptions import ValidationError
 
 def LEVELS():
     level = 1
@@ -211,3 +212,13 @@ class CharacterItem(models.Model):
     class Meta:
         unique_together = (('item','equipped_to'),)
 
+
+    def clean(self):    
+        # Checks to see if item is the same class as the character
+        try:
+            Item.objects.get(id=self.item.id, for_class=self.character.type)
+        except:
+            raise ValidationError('Your character is the wrong class for this item')
+
+        #TODO: check to see if trying to equipt to a place not listed
+        #TODO: to see if thats already something in that post
