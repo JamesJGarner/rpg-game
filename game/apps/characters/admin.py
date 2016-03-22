@@ -1,6 +1,5 @@
 from django.contrib import admin
-from .models import Character, Type, Item, Group, CharacterItem, InvBag
-
+from .models import Character, Type, Item, Group, CharacterItem, InvBag, Position
 
 
 class CharacterItem(admin.TabularInline):
@@ -19,3 +18,5 @@ admin.site.register(Item)
 admin.site.register(Group)
 
 admin.site.register(InvBag)
+
+admin.site.register(Position)

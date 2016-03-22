@@ -1,13 +1,23 @@
 from django.contrib.auth.models import User
 from django.db import models
 
-
 def LEVELS():
     level = 1
     while True:
         yield (level, level*200)
         level += 1
-        
+
+   
+class Position(models.Model):
+
+    name = models.CharField(
+        max_length=200,
+        unique=True,
+        )
+
+    def __unicode__(self):
+        return self.name
+
 
 class InvBag(models.Model):
 
@@ -174,6 +184,12 @@ class Item(models.Model):
         default=0,
         null=True,
     )
+
+    position = models.ManyToManyField(
+        'Position',
+        default=None,
+        )
+
     def __unicode__(self):
         return self.name
 
@@ -185,10 +201,13 @@ class CharacterItem(models.Model):
     item = models.ForeignKey(
         Item,
     )
-    is_currently_equipped = models.BooleanField(
-        default=False,
-    )
+
+    equipped_to = models.ForeignKey(
+        Position,
+        null=True,
+        blank=True,
+        )
 
     class Meta:
-        unique_together = (('item', 'is_currently_equipped'),)
+        unique_together = (('item','equipped_to'),)
 
