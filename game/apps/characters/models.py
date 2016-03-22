@@ -221,4 +221,11 @@ class CharacterItem(models.Model):
             raise ValidationError('Your character is the wrong class for this item')
 
         #TODO: check to see if trying to equipt to a place not listed
+        
+
+        try:
+            item = Item.objects.get(id=self.item.id, position=self.equipped_to.id)
+        except:
+            raise ValidationError('This item cannot be equipped here.')
         #TODO: to see if thats already something in that post
+        #An item is already equipped to this position
