@@ -1,5 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
+<style type="text/css">
+    .cd-character-items { 
+        background-image: url('/static/img/character-type/{{ character.type}}.png');
+    }
+</style>
 <link href='https://fonts.googleapis.com/css?family=Shadows+Into+Light' rel='stylesheet' type='text/css'>
 {% with level_data=character.level_data %}
 <div class="cd-xp-bar" data-width="{{ level_data.xp_percentage }}"></div>

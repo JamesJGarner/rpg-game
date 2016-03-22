@@ -121,6 +121,9 @@ input#cc-name:focus {
     position: relative;
     overflow: hidden;
     max-width: 290px;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: 0 50%;
 }
 
 .cd-character-items li {
