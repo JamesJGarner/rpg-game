@@ -10,7 +10,7 @@
                 {% for character in characters %}
                     <li>
                         {{ character.name }}
-                        <a href="/character/{{ character.id }}">Login</a>
+                        <a href="/character/{{ character.id }}">Select</a>
                         <small>{% with level_data=character.level_data %}Level {{ level_data.current_level }}{% endwith %}</small>
                     </li>
                     <hr>
