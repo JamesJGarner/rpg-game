@@ -139,6 +139,7 @@ input#cc-name:focus {
     border:1px solid #ddd;
     margin:10px 10px 0 0;
     float:left;
+    padding: 8px;
 }
 
 .cd-inventory-bag h3 {

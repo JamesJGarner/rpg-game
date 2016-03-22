@@ -3,6 +3,8 @@ from .views import Homepage
 from game.apps.characters.views import CharacterLeaderboard
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
+from django.conf import settings
+from django.conf.urls.static import static
 admin.autodiscover()
 
 urlpatterns = [
@@ -14,4 +16,4 @@ urlpatterns = [
     url(r'^login/$', auth_views.login),
     url(r'^logout/$', auth_views.logout),
     url(r'^leaderboard/$', CharacterLeaderboard.as_view(), name="leaderbaord"),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
