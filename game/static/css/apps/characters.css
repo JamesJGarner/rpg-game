@@ -12,11 +12,12 @@ input.cc-type {
 }
 
 input.cc-type[type="radio"]:checked+label{
-    background: #E2E2E2;
+    background: rgb(208, 208, 208);
 }
 
 input.cc-type[type="radio"]+label {
     margin: 0;
+    margin-right: 10px;
 }
 
 input#cc-name {
@@ -24,7 +25,7 @@ input#cc-name {
     background: none;
     border: 0;
     box-shadow: none;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+    border-bottom: 1px solid rgb(221, 221, 221);
     font-size: 21pt;
     font-family: 'Open Sans';
     font-weight: 300;
@@ -38,15 +39,14 @@ input#cc-name:focus {
 }
 
 .cc-type {
-    background: #222;
-    border: none;
-    color: #FFF;
+    background: rgb(226, 226, 226);
+    border: 1px solid #eee;
     font-size: 15pt;
     text-align: center;
     transition: background .25s ease-in-out;
     -moz-transition: background .25s ease-in-out;
     -webkit-transition: background .25s ease-in-out;
-    color: #FFF;
+    color: #000;
     width: 200px;
     margin-bottom: 4px !important;
     padding: 20px;
@@ -54,6 +54,10 @@ input#cc-name:focus {
     font-weight: 300;
     font-size: 20pt;
     /* text-transform: uppercase; */
+}
+
+.cc-type img {
+    margin: 20px 0;
 }
 .cc-type label:hover, label:active, input:hover+label, input:active+label {
     background: #E2E2E2;
