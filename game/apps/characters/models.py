@@ -195,12 +195,13 @@ class CharacterItem(models.Model):
         except:
             raise ValidationError('Your character is the wrong class for this item.')
 
-        # Checks to see if item can be equipped in place requested
+        
         if self.equipped_to:
             # Check if character is high enough level
             if not self.character.level_data()['current_level'] >= self.item.level_required:
                 raise ValidationError('You are not a high enough level to equip this item.')
 
+            # Checks to see if item can be equipped in place requested
             try:
                 item = Item.objects.get(id=self.item.id, position=self.equipped_to.id)
             except:
