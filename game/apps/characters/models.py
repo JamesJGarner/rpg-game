@@ -187,7 +187,7 @@ class CharacterItem(models.Model):
         unique_together = (('item','equipped_to'),)
 
 
-    def clean(self):    
+    def clean(self):
 
         # Checks to see if item is the same class as the character
         try:
@@ -197,6 +197,10 @@ class CharacterItem(models.Model):
 
         # Checks to see if item can be equipped in place requested
         if self.equipped_to:
+            # Check if character is high enough level
+            if not self.character.level_data()['current_level'] >= self.item.level_required:
+                raise ValidationError('You are not high enough level for this item.')
+
             try:
                 item = Item.objects.get(id=self.item.id, position=self.equipped_to.id)
             except:
