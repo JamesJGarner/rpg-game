@@ -20,27 +20,6 @@ class Position(models.Model):
         return self.name
 
 
-class InvBag(models.Model):
-
-    name = models.CharField(
-        max_length=200,
-    )
-
-    level_required = models.PositiveIntegerField(
-        )
-
-    worth = models.DecimalField(
-        decimal_places=2,
-        max_digits=100,
-    )
-
-    spaces = models.PositiveIntegerField(
-    )
-
-    def __unicode__(self):
-        return self.name
-
-
 class Type(models.Model):
 
     name = models.CharField(
@@ -84,11 +63,6 @@ class Character(models.Model):
 
     is_deleted = models.BooleanField(
         default=False,
-        )
-    inv_bag = models.ForeignKey(
-        InvBag,
-        null=True,
-        blank=True,
         )
     class Meta:
         ordering = ['name']
@@ -214,7 +188,7 @@ class CharacterItem(models.Model):
 
 
     def clean(self):    
-        
+
         # Checks to see if item is the same class as the character
         try:
             Item.objects.get(id=self.item.id, for_class=self.character.type)
