@@ -199,7 +199,7 @@ class CharacterItem(models.Model):
         if self.equipped_to:
             # Check if character is high enough level
             if not self.character.level_data()['current_level'] >= self.item.level_required:
-                raise ValidationError('You are not high enough level for this item.')
+                raise ValidationError('You are not a high enough level to equip this item.')
 
             try:
                 item = Item.objects.get(id=self.item.id, position=self.equipped_to.id)
