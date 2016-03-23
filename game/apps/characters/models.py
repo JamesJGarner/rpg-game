@@ -214,18 +214,20 @@ class CharacterItem(models.Model):
 
 
     def clean(self):    
+        
         # Checks to see if item is the same class as the character
         try:
             Item.objects.get(id=self.item.id, for_class=self.character.type)
         except:
-            raise ValidationError('Your character is the wrong class for this item')
+            raise ValidationError('Your character is the wrong class for this item.')
 
-        #TODO: check to see if trying to equipt to a place not listed
+        # Checks to see if item can be equipped in place requested
+        if self.equipped_to:
+            try:
+                item = Item.objects.get(id=self.item.id, position=self.equipped_to.id)
+            except:
+                raise ValidationError('This item cannot be equipped here.')
         
-
-        try:
-            item = Item.objects.get(id=self.item.id, position=self.equipped_to.id)
-        except:
-            raise ValidationError('This item cannot be equipped here.')
-        #TODO: to see if thats already something in that post
-        #An item is already equipped to this position
+            # Check to see if item is equipped somewhere else.
+            if CharacterItem.objects.filter(character=self.character, item=self.item,  equipped_to__isnull=False).exclude(pk=self.pk):
+                raise ValidationError('This item is already equipped somewhere else.')
