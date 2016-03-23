@@ -1,5 +1,5 @@
 from django.views.generic import DetailView, CreateView, ListView
-from .models import Character, Type, Item
+from .models import Character, Type, Item, CharacterItem
 from .forms import CharacterCreate, CreateMatch
 from game.apps.match.models import Match, Enemy
 from django.views.generic.edit import ModelFormMixin
@@ -36,6 +36,17 @@ class CharacterLeaderboard(ListView):
 class CharacterDetail(DetailView):
     model = Character
 
+
+    def get_context_data(self, **kwargs):
+        context = super(CharacterDetail, self).get_context_data(**kwargs)
+        
+        equipped_items =  CharacterItem.objects.filter(character=self.object.pk, equipped_to__isnull=False)
+
+        for i in equipped_items:
+            print i.equipped_to
+            context[i.equipped_to.name.replace (" ", "_").lower()] = i.item
+
+        return context
 
 class CreateMatch(CreateView):
     model = Match

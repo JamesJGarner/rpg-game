@@ -120,10 +120,9 @@ input#cc-name:focus {
     width: 100%;
     position: relative;
     overflow: hidden;
-    max-width: 290px;
+    max-width: 400px;
     background-repeat: no-repeat;
-    background-size: 100%;
-    background-position: 0 50%;
+    background-position: 50%;
 }
 
 .cd-character-items li {
