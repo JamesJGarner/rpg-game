@@ -123,6 +123,14 @@ class Item(models.Model):
         unique=True,
     )
 
+
+    icon = models.ImageField(
+        upload_to='icon',
+        blank=True,
+        null=True,
+        )
+
+
     image = models.ImageField(
         upload_to='items',
         blank=True,
