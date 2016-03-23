@@ -43,7 +43,6 @@ class CharacterDetail(DetailView):
         equipped_items =  CharacterItem.objects.filter(character=self.object.pk, equipped_to__isnull=False)
 
         for i in equipped_items:
-            print i.equipped_to
             context[i.equipped_to.name.replace (" ", "_").lower()] = i.item
 
         return context
