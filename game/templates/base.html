@@ -16,43 +16,39 @@
     <script src="/static/js/vendor/modernizr.js"></script>
   </head>
   <body>
-<ul class="tabs" data-tabs id="example-tabs">
-  <li class="tabs-title is-active"><a href="#panel1" aria-selected="true">Tab 1</a></li>
-  <li class="tabs-title"><a href="#panel2">Tab 2</a></li>
-</ul>
-    <nav class="top-bar" data-topbar role="navigation">
-      <ul class="title-area">
-        <li class="name">
-          <h1><a href="{% block url %}/{% endblock %}">RPG Alpha</a></h1>
-        </li>
-        <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
-      </ul>
+    <div class="top-bar">
+    <div class="top-bar-left">
+    <ul class="menu">
+    <li class="menu-text"><a href="{% block url %}/{% endblock %}">RPG Alpha</a></li>
+    </ul>
+    </div>
 
-      <section class="top-bar-section">
+      
         {% if user.is_authenticated %}
-          <ul class="right">
+          <div class="top-bar-right">
+          <ul class="dropdown menu" data-dropdown-menu>
           {% block navigation %}
           {% load my_characters %}
-            <li class="has-dropdown">
+            <li>
               <a href="#">Your Characters</a>
-              <ul class="dropdown">
+              <ul class="menu vertical">
                 {% my_characters %}
                 <li><a href="/character/create/" class="active">Create Character</a></li>
               </ul>
             </li>
-            <li class="has-dropdown">
+            <li>
               <a href="#">Account</a>
-              <ul class="dropdown">
+              <ul class="menu vertical">
                 <li><a href="#">View Profile</a></li>
                 <li><a href="/logout/">Logout</a></li>
               </ul>
             </li>           
           {% endblock %}
           </ul>
+          </ul>
         {% endif %}
-      </section>
-      
-    </nav>
+    </div>
+    </div>
     {% block content %}{% endblock %}
     <script src="/static/js/vendor/jquery.min.js"></script>
     <script src="/static/js/vendor/what-input.min.js"></script>

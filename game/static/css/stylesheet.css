@@ -9,6 +9,7 @@ a {
 .top-bar {
     margin-bottom:20px;
         background-color: #0078a0;
+        padding: 0;
 }
 
 .top-bar-section li:not(.has-form) a:not(.button) {
@@ -17,4 +18,12 @@ a {
 
 h1,h2,h3,h4,h5,h6 {
 	font-family: 'Open Sans';
+}
+
+.menu > li > a {
+	color:#FFF;
+}
+
+.top-bar ul {
+    background: none;
 }
