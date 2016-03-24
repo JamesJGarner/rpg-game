@@ -202,10 +202,11 @@ ul.character-listing li a {
 
 .character-listing-xp-bar {
     background: #000;
-    height: 5px;
-    width: 40%;
+    width: 0;
+    height: 3px;
+    transition: width 550ms ease-out 650ms;
     float: left;
-    margin-top: -6px;
+    margin-top: -2px;
 }
 
 .character-listing-level {
