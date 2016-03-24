@@ -88,9 +88,9 @@ input#cc-name:focus {
 }
 
 .cd-sidebar h3 {
-    text-align: center;
-    padding: 22px;
+    font-weight:300;
     border-bottom: 1px solid #ddd;
+    padding-bottom:10px;
 }
 
 .cd-sidebar ul li {
@@ -133,6 +133,7 @@ input#cc-name:focus {
 
 .cd-inventory-bag {
     float:left;
+    margin:0;
     width:100%;
     list-style: none;
 }
@@ -149,4 +150,13 @@ input#cc-name:focus {
     font-weight:300;
     border-bottom: 1px solid #ddd;
     padding-bottom:10px;
+}
+
+.tabs-panel, .tabs-content {
+    float: left;
+    width:100%;
+}
+
+.tabs-panel {
+    padding: 30px;
 }
