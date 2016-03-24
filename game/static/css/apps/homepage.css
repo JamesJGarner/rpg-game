@@ -5,3 +5,11 @@
 	padding: 20px;
 	color:#000;
 }
+
+.homepage-login {
+	padding: 20px;
+	float: left;
+	width:100%;
+	background:#FFF;
+	margin-top:60px;
+}
