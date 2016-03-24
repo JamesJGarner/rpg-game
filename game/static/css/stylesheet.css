@@ -4,12 +4,13 @@ body {
 
 a {
   color:#0078a0;
+  font-family: 'Open Sans';
 }
 
 .top-bar {
-    margin-bottom:20px;
-        background-color: #0078a0;
-        padding: 0;
+    margin-bottom: 20px;
+    background-color: #19963C;
+    padding: 10px;
 }
 
 .top-bar-section li:not(.has-form) a:not(.button) {
@@ -26,4 +27,10 @@ h1,h2,h3,h4,h5,h6 {
 
 .top-bar ul {
     background: none;
+}
+
+.menu-text a {
+	padding: 0 !important;
+	font-weight: 400;
+	font-size: 13pt;
 }
