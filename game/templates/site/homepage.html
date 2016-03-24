@@ -2,29 +2,26 @@
 {% block content %}
 {% if user.is_authenticated  %}
 <div class="row">
-    <div class="large-4 columns">
-        <div class="hp-sidebar">
-            <h3>Your Characters</h3>
-            <hr>
             <ul class="character-listing">
                 {% for character in characters %}
+                <div class="large-4 columns">
                     <li>
-                        {{ character.name }}
-                        <a href="/character/{{ character.id }}">Select</a>
-                        <small>{% with level_data=character.level_data %}Level {{ level_data.current_level }}{% endwith %}</small>
+                        <span class="character-listing-xp-bar"></span>
+                        <a href="/character/{{ character.id }}">
+                        <p class="character-listing-level">{% with level_data=character.level_data %}Level {{ level_data.current_level }}{% endwith %}</p>
+                        <img src="/static/img/character-type/Fruity.png">
+                        <h2>{{ character.name }}</h2>
+                        <small>{{ character.type }}</small>
+                        
+                        </a>
                     </li>
-                    <hr>
+                </div>
                 {% endfor %}
-                <li> <a href="/character/create/"><small>Create a character</small></a> </li>
+                <div class="large-4 columns float-left">
+                <a href="/character/create/" class="character-listing-create"><li>+</li></a>
+                </div>
             </ul>
         </div>
-    </div>
-    <div class="large-8 columns">
-        <h2>Game Updates</h2>
-        <hr>
-        <p>There will be change log here soon.</p>
-        <hr>
-        <p><a href="/leaderboard">View the leaderboard</a></p>
     </div>
 </div>
 {% else %}
