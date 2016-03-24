@@ -7,7 +7,7 @@
     <div class="large-12 columns left">
         <form action="" method="post">
             {% csrf_token %}
-            <input id="cc-name" maxlength="150" name="name" placeholder="Name..." type="text" required>
+            <input id="cc-name" maxlength="150" name="name" placeholder="Name..." type="text" required autofocus>
             {{ form.errors.name }}
             {% for type in types %}
                 <input type="radio" name="type" class="cc-type" value="{{ type.id }}" id="{{ type.name }}">
