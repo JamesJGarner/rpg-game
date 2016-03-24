@@ -35,7 +35,7 @@
                 <h3>Inventory</h3>
                 {% if  character.characteritem_set.all %}
                 {% for item in character.characteritem_set.all  %}
-                <li><img src="/media/{{ item.item.icon }}"></li>
+                <li><img src="{{ item.item.icon.url }}"></li>
                 {% endfor %}
                 {% else %}
                 <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
