@@ -53,6 +53,7 @@ input#cc-name:focus {
     font-family: 'open sans';
     font-weight: 300;
     font-size: 20pt;
+    cursor: pointer;
     /* text-transform: uppercase; */
 }
 
