@@ -8,20 +8,7 @@
 <link href='https://fonts.googleapis.com/css?family=Shadows+Into+Light' rel='stylesheet' type='text/css'>
 {% with level_data=character.level_data %}
 <div class="cd-xp-bar" data-width="{{ level_data.xp_percentage }}"></div>
-<div>
-<div class="large-3 columns">
-        <div class="cd-sidebar">
-            <h3>Match History</h3>
-            <ul class="history-listing">
-            {% for match in character.match_set.all  %}
-
-                <li>{{ match.character }} vs {{ match.enemy }}</li>
-
-            {% endfor %}
-            <!-- <li>{{ level_data.xp_percentage}}% Until Next Level</li> -->
-            </ul>
-        </div>
-    </div>
+<div class="row">
     <div class="large-9 columns">
         <div class="cd-main">
             <h2>{{ character.name }} <small>Level {{ level_data.current_level }} {{ character.type }}</small></h2>
@@ -46,8 +33,20 @@
         <a href="{{ character.get_absolute_url }}/create" class="button small">Start Match</a>
         <a href="{{ character.get_absolute_url }}/shop/" class="button small right">Shop</a>
         <a href="{{ character.get_absolute_url }}/spells/" class="button small right">Spell Book</a>
-</div>
+    </div>
+    <div class="large-3 columns">
+        <div class="cd-sidebar">
+            <h3>Match History</h3>
+            <ul class="history-listing">
+            {% for match in character.match_set.all  %}
 
+                <li>{{ match.character }} vs {{ match.enemy }}</li>
+
+            {% endfor %}
+            <!-- <li>{{ level_data.xp_percentage}}% Until Next Level</li> -->
+            </ul>
+        </div>
+    </div>
     <script src="/static/js/countdown.min.js"></script>
 {% endwith %}
 {% endblock %}
