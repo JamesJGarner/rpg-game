@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Character, Type, Item, Group, CharacterItem, Position
+from .models import Character, _Class, Item, Group, CharacterItem, Position
 
 
 class CharacterItem(admin.TabularInline):
@@ -11,7 +11,7 @@ class CharacterAdmin(admin.ModelAdmin):
 
 admin.site.register(Character, CharacterAdmin)
 
-admin.site.register(Type)
+admin.site.register(_Class)
 
 admin.site.register(Item)
 

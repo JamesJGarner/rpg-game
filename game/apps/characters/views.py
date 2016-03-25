@@ -1,5 +1,5 @@
 from django.views.generic import DetailView, CreateView, ListView
-from .models import Character, Type, Item, CharacterItem
+from .models import Character, _Class, Item, CharacterItem
 from .forms import CharacterCreate, CreateMatch
 from game.apps.match.models import Match, Enemy
 from django.views.generic.edit import ModelFormMixin
@@ -87,7 +87,7 @@ class CharacterCreate(CreateView):
 
     def get_context_data(self, **kwargs):
         context = super(CharacterCreate, self).get_context_data(**kwargs)
-        context['types'] = Type.objects.all()
+        context['types'] = _Class.objects.all()
         return context
 
     def get_success_url(self):

@@ -20,7 +20,7 @@ class Position(models.Model):
         return self.name
 
 
-class Type(models.Model):
+class _Class(models.Model):
 
     name = models.CharField(
         max_length=150,
@@ -33,7 +33,11 @@ class Type(models.Model):
 
     def __unicode__(self):
         return self.name
-
+        
+    class Meta:
+        verbose_name = "Class"
+        verbose_name_plural = "Classes"
+    
 
 class Character(models.Model):
 
@@ -47,7 +51,7 @@ class Character(models.Model):
     )
 
     for_class = models.ForeignKey(
-        Type,
+        _Class,
     )
 
     # This will get removed / ignored when you have armor
@@ -147,7 +151,7 @@ class Item(models.Model):
     )
 
     for_class = models.ForeignKey(
-	    Type,
+	    _Class,
     )
 
     level_required = models.PositiveIntegerField(

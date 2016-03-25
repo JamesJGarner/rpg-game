@@ -1,6 +1,6 @@
 from django.db import models
 from game.apps.enemies.models import Enemy
-from game.apps.characters.models import Character, Type
+from game.apps.characters.models import Character
 from game.apps.spells.models import Spell
 
 class Match(models.Model):

@@ -1,5 +1,5 @@
 from django.db import models
-from game.apps.characters.models import Character, Type
+from game.apps.characters.models import Character, _Class
 
 
 class Spell(models.Model):
@@ -9,7 +9,7 @@ class Spell(models.Model):
     )
 
     for_class = models.ForeignKey(
-        Type,
+        _Class,
         null=True,
     )
 
@@ -44,6 +44,8 @@ class SpellAcquired(models.Model):
 
     class Meta:
         unique_together = ('character', 'spell')
+        verbose_name = "Acquired Spell"
+        verbose_name_plural = "Acquired Spells"
 
 
     def clean(self):
