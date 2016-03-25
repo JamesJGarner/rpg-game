@@ -14,6 +14,11 @@ class Spell(models.Model):
         null=True,
     )
 
+    image = models.ImageField(
+        upload_to='spells',
+        null=True,
+        )
+
     description = models.TextField(
         null=True,
     )
