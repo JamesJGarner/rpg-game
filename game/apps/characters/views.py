@@ -6,6 +6,7 @@ from django.views.generic.edit import ModelFormMixin
 from django.core.urlresolvers import reverse
 from django.shortcuts import get_object_or_404
 from game.apps.match.helpers import calculate_player_health, calculate_boss_health
+from game.apps.spells.models import SpellAcquired
 
 
 class ShopItems(ListView):
@@ -41,6 +42,9 @@ class CharacterDetail(DetailView):
         context = super(CharacterDetail, self).get_context_data(**kwargs)
         
         equipped_items =  CharacterItem.objects.filter(character=self.object.pk, equipped_to__isnull=False)
+        spells_acquired = SpellAcquired.objects.filter(character=self.object.pk)
+
+        context['spells'] = spells_acquired
 
         for i in equipped_items:
             context[i.equipped_to.name.replace (" ", "_").lower()] = i.item
