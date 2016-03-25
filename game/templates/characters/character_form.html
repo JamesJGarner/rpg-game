@@ -10,7 +10,7 @@
             <input id="cc-name" maxlength="150" name="name" placeholder="Name..." type="text" required autofocus>
             {{ form.errors.name }}
             {% for type in types %}
-                <input type="radio" name="type" class="cc-type" value="{{ type.id }}" id="{{ type.name }}">
+                <input type="radio" name="for_class" class="cc-type" value="{{ type.id }}" id="{{ type.name }}">
                 <label for="{{ type.name }}" class="cc-type"><img src="/static/img/character-type/{{ type.name }}.png">{{ type.name }}</label>
             {% endfor %}
             {{ form.errors.type }}
