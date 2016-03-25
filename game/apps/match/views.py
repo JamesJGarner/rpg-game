@@ -118,7 +118,7 @@ class AttackForm(CreateView):
             else:
                 cooldown = False
 
-        if spell.level_required <= character_level and spell.type == match.character.type and cooldown == False:
+        if spell.level_required <= character_level and spell.for_class == match.character.type and cooldown == False:
 
             if match.finished is False:
                 if match.enemy_health <= player_damage:
