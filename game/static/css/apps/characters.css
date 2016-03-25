@@ -171,6 +171,7 @@ ul.character-listing li a {
     margin: 0;
     min-height: 266px;
     font-family: 'Open Sans';    
+    margin-bottom: 30px;
 }
 
 .character-listing li a h2 {
@@ -204,7 +205,7 @@ ul.character-listing li a {
     height: 3px;
     transition: width 550ms ease-out 650ms;
     float: left;
-    margin-top: -2px;
+    margin-top: -3px;
 }
 
 .character-listing-level {
