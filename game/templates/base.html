@@ -19,15 +19,12 @@
     <div class="top-bar">
     <div class="top-bar-left">
     <ul class="menu">
-    <li class="menu-text"><a href="{% block url %}/{% endblock %}">RPG Alpha</a></li>
+    <li class="menu-text"><a href="/">RPG Alpha</a></li>
     </ul>
-    </div>
-
-      
+    </div>  
         {% if user.is_authenticated %}
           <div class="top-bar-right">
           <ul class="dropdown menu" data-dropdown-menu>
-          {% block navigation %}
           {% load my_characters %}
             <li>
               <a href="#">Your Characters</a>
@@ -43,7 +40,6 @@
                 <li><a href="/logout/">Logout</a></li>
               </ul>
             </li>           
-          {% endblock %}
           </ul>
           </ul>
         {% endif %}

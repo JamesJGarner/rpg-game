@@ -30,7 +30,15 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 .top-bar ul {
-    background: none;
+  background: none;
+}
+.is-dropdown-submenu {
+    border: 0px;
+    padding-top: 10px;
+    background: rgba(25, 150, 60, 0.6) !important;
+}
+.is-dropdown-submenu-parent.is-down-arrow > a::after {
+  border-color: #FFFFFF transparent transparent;
 }
 
 .menu-text a {
