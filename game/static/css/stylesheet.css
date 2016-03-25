@@ -7,6 +7,10 @@ a {
   font-family: 'Open Sans';
 }
 
+.button {
+      background-color: #19963C;
+}
+
 .top-bar {
     margin-bottom: 40px;
     background-color: #19963C;

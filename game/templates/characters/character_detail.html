@@ -73,10 +73,3 @@ $(function() {
 });
 </script>
 {% endblock %}
-{% block url %}
-    {{ character.get_absolute_url }}
-{% endblock %}
-{% block navigation %}
-    <li><a href="{{ character.get_absolute_url }}">{{ character.name }}</a></li>
-    <li><a href="/">Switch Character</a></li>
-{% endblock %}

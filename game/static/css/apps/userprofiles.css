@@ -1,0 +1,52 @@
+.userprofile-sidebar {
+	float: left;
+	width:100%;
+	background:#FFF;
+	padding: 20px;
+	margin-bottom: 10px;
+}
+
+.userprofile-buttons {
+	width:49%;
+	float: left;
+}
+
+ul.profile-character-listing {
+	margin: 0;
+}
+ul.profile-character-listing li {
+    list-style: none;
+}
+
+ul.profile-character-listing li a {
+    background: #FFF;
+    float: left;
+    width: 100%;
+    color: #000;
+    margin: 0;
+    margin-bottom: 20px;
+    font-family: 'Open Sans';    
+}
+
+.profile-character-listing li a h2 {
+    font-weight: 300;
+}
+
+.profile-character-listing li a small {
+    margin-top: -15px;
+    float: left;
+}
+
+.profile-character-listing li img {
+    width: 30%;
+    float: left;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.profile-character-listing-level {
+    padding: 10px;
+    float: left;
+    width: 100%;
+    margin: 0;
+}
