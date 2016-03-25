@@ -1,5 +1,5 @@
 from django.db import models
-
+from game.apps.characters.models import Character, Class
 
 class Group(models.Model):
     name = models.CharField(

@@ -5,9 +5,9 @@ from game.apps.matches.models import Match, Enemy
 from django.views.generic.edit import ModelFormMixin
 from django.core.urlresolvers import reverse
 from django.shortcuts import get_object_or_404
-from game.apps.match.helpers import calculate_player_health, calculate_boss_health
+from game.apps.matches.helpers import calculate_player_health, calculate_boss_health
 from game.apps.spells.models import SpellAcquired
-from games.apps.items.models import ItemAcquired
+from game.apps.items.models import ItemAcquired
 
 
 class CharacterLeaderboard(ListView):
