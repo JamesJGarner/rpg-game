@@ -34,7 +34,7 @@ h1,h2,h3,h4,h5,h6 {
 }
 .is-dropdown-submenu {
     border: 0px;
-    padding-top: 10px;
+    padding-top: 15px;
     background: rgba(25, 150, 60, 0.6) !important;
 }
 .is-dropdown-submenu-parent.is-down-arrow > a::after {
@@ -45,4 +45,17 @@ h1,h2,h3,h4,h5,h6 {
 	padding: 0 !important;
 	font-weight: 400;
 	font-size: 13pt;
+}
+
+.navigation-image {
+    width: 32px;
+    margin-right: 11px !important;
+    margin-top: -3px;
+}
+
+.character-create-button {
+    font-size: 20pt;
+    text-align: center;
+    background: rgba(25,150,60,0.30);
+    margin-top: 8px;
 }
