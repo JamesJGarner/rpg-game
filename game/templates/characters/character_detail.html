@@ -38,7 +38,9 @@
     </ul>
   </div>
   <div class="tabs-panel is-active" id="panel2">
-  
+  {% for item in spells %}
+    {{ item.spell.name }}
+  {% endfor %}
   </div>
   <div class="tabs-panel" id="panel3">
         <div class="cd-sidebar">
