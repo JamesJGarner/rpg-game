@@ -12,7 +12,7 @@ input.cc-type {
 }
 
 input.cc-type[type="radio"]:checked+label{
-    background: rgb(208, 208, 208);
+    background: rgb(226, 226, 226);
 }
 
 input.cc-type[type="radio"]+label {
@@ -39,7 +39,7 @@ input#cc-name:focus {
 }
 
 .cc-type {
-    background: rgb(226, 226, 226);
+    background: #FFF;
     border: 1px solid #eee;
     font-size: 15pt;
     text-align: center;
@@ -54,15 +54,12 @@ input#cc-name:focus {
     font-weight: 300;
     font-size: 20pt;
     cursor: pointer;
-    /* text-transform: uppercase; */
 }
 
 .cc-type img {
     margin: 20px 0;
 }
-.cc-type label:hover, label:active, input:hover+label, input:active+label {
-    background: #E2E2E2;
-}
+
 
 .darkblack {
     background: rgb(66, 66, 66);
