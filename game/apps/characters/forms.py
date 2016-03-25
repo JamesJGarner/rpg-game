@@ -1,6 +1,6 @@
 from django import forms
 from .models import Character
-from game.apps.match.models import Match
+from game.apps.matches.models import Match
 
 class CharacterCreate(forms.ModelForm):
     error_css_class = "error"

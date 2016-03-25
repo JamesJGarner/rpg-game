@@ -41,9 +41,10 @@ INSTALLED_APPS = [
     "compressor",
     'game.apps.enemies',
     'game.apps.characters',
-    'game.apps.match',
+    'game.apps.matches',
     'game.apps.spells',
-    'game.apps.userprofile',
+    'game.apps.userprofiles',
+    'game.apps.items',
 ]
 
 STATIC_ROOT = "/var/www/game/static"

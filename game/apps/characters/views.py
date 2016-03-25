@@ -1,28 +1,13 @@
 from django.views.generic import DetailView, CreateView, ListView
-from .models import Character, _Class, Item, CharacterItem
+from .models import Character, Class
 from .forms import CharacterCreate, CreateMatch
-from game.apps.match.models import Match, Enemy
+from game.apps.matches.models import Match, Enemy
 from django.views.generic.edit import ModelFormMixin
 from django.core.urlresolvers import reverse
 from django.shortcuts import get_object_or_404
 from game.apps.match.helpers import calculate_player_health, calculate_boss_health
 from game.apps.spells.models import SpellAcquired
-
-
-class ShopItems(ListView):
-    model = Item
-
-    def get_context_data(self, **kwargs):
-        context = super(ShopItems, self).get_context_data(**kwargs)
-        # Need to filter by Class(type)
-        context['item_list'] = Item.objects.all()
-        for item in context['item_list']:
-            if  self.request.user >= item.level_required:
-                pass
-            else:
-                context['insufficient'] = "Insufficient Level"
-
-        return context
+from games.apps.items.models import ItemAcquired
 
 
 class CharacterLeaderboard(ListView):
@@ -41,7 +26,7 @@ class CharacterDetail(DetailView):
     def get_context_data(self, **kwargs):
         context = super(CharacterDetail, self).get_context_data(**kwargs)
         
-        equipped_items =  CharacterItem.objects.filter(character=self.object.pk, equipped_to__isnull=False)
+        equipped_items =  ItemAcquired.objects.filter(character=self.object.pk, equipped_to__isnull=False)
         spells_acquired = SpellAcquired.objects.filter(character=self.object.pk)
 
         context['spells'] = spells_acquired
@@ -50,6 +35,7 @@ class CharacterDetail(DetailView):
             context[i.equipped_to.name.replace (" ", "_").lower()] = i.item
 
         return context
+
 
 class CreateMatch(CreateView):
     model = Match
@@ -91,12 +77,8 @@ class CharacterCreate(CreateView):
 
     def get_context_data(self, **kwargs):
         context = super(CharacterCreate, self).get_context_data(**kwargs)
-        context['types'] = _Class.objects.all()
+        context['types'] = Class.objects.all()
         return context
 
     def get_success_url(self):
         return reverse('character:detail', kwargs={'pk': self.object.pk})
-
-
-#class DeleteCharacter(UpdateView):
-#    model = Character

@@ -1,20 +1,15 @@
 from django.contrib import admin
-from .models import Character, _Class, Item, Group, CharacterItem, Position
+from .models import Character, Class
+from game.apps.items.models import ItemAcquired
 
 
-class CharacterItem(admin.TabularInline):
-    model = CharacterItem
+class ItemAcquired(admin.TabularInline):
+    model = ItemAcquired
 
 
 class CharacterAdmin(admin.ModelAdmin):
-    inlines = [CharacterItem]
+    inlines = [ItemAcquired]
+
 
 admin.site.register(Character, CharacterAdmin)
-
-admin.site.register(_Class)
-
-admin.site.register(Item)
-
-admin.site.register(Group)
-
-admin.site.register(Position)
+admin.site.register(Class)
