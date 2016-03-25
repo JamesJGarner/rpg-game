@@ -39,7 +39,7 @@ class MatchDetail(DetailView):
         context = super(MatchDetail, self).get_context_data(**kwargs)
 
         context['spells'] = Spell.objects.filter(
-            type=self.object.character.for_class,
+            for_class=self.object.character.for_class,
             level_required__lte=context['match'].character.level_data()['current_level'],
         )
 
