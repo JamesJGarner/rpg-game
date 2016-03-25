@@ -46,7 +46,7 @@ class Character(models.Model):
         unique=True,
     )
 
-    type = models.ForeignKey(
+    for_class = models.ForeignKey(
         Type,
     )
 
@@ -199,7 +199,7 @@ class CharacterItem(models.Model):
 
         # Checks to see if item is the same class as the character
         try:
-            Item.objects.get(id=self.item.id, for_class=self.character.type)
+            Item.objects.get(id=self.item.id, for_class=self.character.for_class)
         except:
             raise ValidationError('Your character is the wrong class for this item.')
 

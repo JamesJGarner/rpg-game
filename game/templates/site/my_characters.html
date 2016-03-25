@@ -1,5 +1,5 @@
 {% for character in my_characters %}
     <li {% if request.path == character.get_absolute_url  %}class="active"{% else %}{% endif %}>
-        <a href="/character/{{ character.id }}"><img src="/static/img/character-type/{{ character.type}}.png" class="navigation-image">{{ character.name }}</a>
+        <a href="/character/{{ character.id }}"><img src="/static/img/character-type/{{ character.for_class}}.png" class="navigation-image">{{ character.name }}</a>
     </li>
 {% endfor %}

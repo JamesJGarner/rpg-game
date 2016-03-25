@@ -2,7 +2,7 @@
 {% block content %}
 <style type="text/css">
     .cd-character-items { 
-        background-image: url('/static/img/character-type/{{ character.type}}.png');
+        background-image: url('/static/img/character-type/{{ character.for_class}}.png');
     }
 </style>
 <link href='https://fonts.googleapis.com/css?family=Shadows+Into+Light' rel='stylesheet' type='text/css'>
@@ -11,7 +11,7 @@
     <div class="large-12 columns">
         <div class="cd-xp-bar" data-width="{{ level_data.xp_percentage }}"></div>
         <div class="cd-main">
-            <h2>{{ character.name }} <small>Level {{ level_data.current_level }} {{ character.type }}</small></h2>
+            <h2>{{ character.name }} <small>Level {{ level_data.current_level }} {{ character.for_class }}</small></h2>
             <div class="large-5 columns">
             <ul class="cd-character-items">
                 {% include 'characters/character_structure.html' %}

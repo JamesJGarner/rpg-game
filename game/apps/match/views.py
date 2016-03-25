@@ -39,7 +39,7 @@ class MatchDetail(DetailView):
         context = super(MatchDetail, self).get_context_data(**kwargs)
 
         context['spells'] = Spell.objects.filter(
-            type=self.object.character.type,
+            type=self.object.character.for_class,
             level_required__lte=context['match'].character.level_data()['current_level'],
         )
 
@@ -118,7 +118,7 @@ class AttackForm(CreateView):
             else:
                 cooldown = False
 
-        if spell.level_required <= character_level and spell.for_class == match.character.type and cooldown == False:
+        if spell.level_required <= character_level and spell.for_class == match.character.for_class and cooldown == False:
 
             if match.finished is False:
                 if match.enemy_health <= player_damage:

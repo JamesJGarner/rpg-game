@@ -10,9 +10,9 @@
                         <a href="/character/{{ character.id }}">
                         <span class="character-listing-xp-bar" id="character-{{ character.id }}" data-width="{{ level_data.xp_percentage }}"></span>
                         <p class="character-listing-level">Level {{ level_data.current_level }}</p>
-                        <img src="/static/img/character-type/{{ character.type}}.png">
+                        <img src="/static/img/character-type/{{ character.for_class}}.png">
                         <h2>{{ character.name }}</h2>
-                        <small>{{ character.type }}</small>
+                        <small>{{ character.for_class }}</small>
                         </a>
                     </li>
                 </div>

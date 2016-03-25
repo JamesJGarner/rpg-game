@@ -50,6 +50,6 @@ class SpellAcquired(models.Model):
 
         # Checks to see if item is the same class as the character
         try:
-            Spell.objects.get(id=self.item.id, for_class=self.character.type)
+            Spell.objects.get(id=self.item.id, for_class=self.character.for_class)
         except:
             raise ValidationError('Your character is the wrong class for this item.')
