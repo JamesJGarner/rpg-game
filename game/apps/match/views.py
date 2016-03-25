@@ -4,7 +4,7 @@ from .models import Match, Attack
 from game.apps.characters.models import Character
 from game.apps.enemies.models import Enemy
 from .forms import CreateMatch, AttackForm
-from .models import Spell
+from game.apps.spells.models import Spell
 from django.utils.timezone import now
 from django.shortcuts import get_object_or_404
 from django.core.urlresolvers import reverse
