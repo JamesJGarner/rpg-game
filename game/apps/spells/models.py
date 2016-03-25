@@ -1,5 +1,6 @@
 from django.db import models
 from game.apps.characters.models import Character, _Class
+from django.core.exceptions import ValidationError
 
 
 class Spell(models.Model):
