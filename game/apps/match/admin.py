@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Match, Attack, Spell
+from .models import Match, Attack
 
 
 class AttackAdmin(admin.TabularInline):
@@ -12,7 +12,3 @@ class MatchAdmin(admin.ModelAdmin):
 admin.site.register(Match, MatchAdmin)
 
 
-class SpellAdmin(admin.ModelAdmin):
-    pass
-
-admin.site.register(Spell, SpellAdmin)

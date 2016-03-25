@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'game.apps.enemies',
     'game.apps.characters',
     'game.apps.match',
+    'game.apps.spells',
     'game.apps.userprofile',
 ]
 

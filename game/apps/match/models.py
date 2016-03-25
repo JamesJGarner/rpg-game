@@ -1,7 +1,7 @@
 from django.db import models
 from game.apps.enemies.models import Enemy
 from game.apps.characters.models import Character, Type
-
+from game.apps.spells.models import Spell
 
 class Match(models.Model):
 
@@ -42,33 +42,6 @@ class Match(models.Model):
             return ("match:detail", (), {
                 "pk": self.pk
             })
-
-
-class Spell(models.Model):
-
-    name = models.CharField(
-        max_length=140,
-        )
-    type = models.ForeignKey(
-        Type,
-        null=True,
-    )
-    description = models.TextField(
-        null=True,
-        )
-
-    damage = models.PositiveIntegerField(
-        )
-
-    level_required = models.PositiveIntegerField(
-        null=True,
-        )
-
-    turn_cooldown = models.PositiveIntegerField(
-        )
-
-    def __unicode__(self):
-        return self.name
 
 
 class Attack(models.Model):
