@@ -26,35 +26,72 @@
 </ul>
 <div class="tabs-content" data-tabs-content="example-tabs">
   <div class="tabs-panel is-active" id="panel1">
+    <div class="large-8 columns cd-no-padding">
     <ul class="cd-inventory-bag">
-        <h3>Inventory</h3>
-        {% if character.characteritem_set.all %}
-        {% for item in character.characteritem_set.all  %}
-        <li><img src="{{ item.item.icon.url }}"></li>
+        {% if character.itemacquired_set.all %}
+        {% for item in character.itemacquired_set.all  %}
+        <li id="inv-{{ item.id }}"><img src="{{ item.item.icon.url }}"></li>
+        <div id="inv-{{ item.id }}-dropdown" class="cd-spell-hide">
+          <ul class="cd-spell-detail">
+            <li><img src="{{ item.item.icon.url }}"></li>
+            <li><h4>{{ item.item.name  }}</h4></li>
+            <li>Damage: {{ item.item.damage }}</li>
+            <li>Healing: {{ item.item.healing }}</li>
+            <li>Armor: {{ item.item.armor }}</li>
+          </ul>
+        </div>
         {% endfor %}
         {% else %}
         <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
         {% endif %}
     </ul>
   </div>
-  <div class="tabs-panel is-active" id="panel2">
+  <div class="large-4 columns cd-no-padding">
+  <div class="cd-spell-sidebar" id="inv-sidebar">
+  </div>
+  </div>
+  </div>
+  <div class="tabs-panel" id="panel2">
+  <div class="large-8 columns cd-no-padding">
+  <ul class="cd-spells">
   {% for item in spells %}
-    {{ item.spell.name }}
+    <li id="spell-{{ item.id }}"><img src="{{ item.spell.image.url }}"></li>
+    <div id="spell-{{ item.id }}-dropdown" class="cd-spell-hide">
+      <ul class="cd-spell-detail">
+        <li><img src="{{ item.spell.image.url }}"></li>
+        <li><h4>{{ item.spell.name }}</h4></li>
+        <li>Spell Damage: {{ item.spell.damage }}</li>
+        <li>Level Required: {{ item.spell.level_required }}</li>
+        <li>Turn Cooldown: {{ item.spell.turn_cooldown }}</li>
+      </ul>
+    </div>
   {% endfor %}
+  </ul>
+  </div>
+  <div class="large-4 columns cd-no-padding">
+  <div class="cd-spell-sidebar" id="sidebar">
+  </div>
+  </div>
   </div>
   <div class="tabs-panel" id="panel3">
-        <div class="cd-sidebar">
-            <h3>Statistics</h3>
-            <ul class="history-listing">
+            <ul class="cd-statistics">
             {% for match in character.match_set.all  %}
-
-                <li>{{ match.character }} vs {{ match.enemy }}</li>
-
+                <li>
+                  <a href="/match/{{ match.id }}/">
+                  {{ match.character }} vs {{ match.enemy }}
+                  {% if match.enemy_health == 0 %}
+                    <span class="success label">Won</span>
+                  {% elif match.character_health == 0 %}
+                    <span class="alert label">Lost</span>
+                  {% else %}
+                    <span class="warning label">Unfinished</span>
+                  {% endif %}
+                  </a>
+                </li>
             {% endfor %}
             <!-- <li>{{ level_data.xp_percentage}}% Until Next Level</li> -->
             </ul>
         </div>
-  </div>
 
 </div>
 
@@ -74,4 +111,5 @@ $(function() {
     $('.cd-xp-bar').width($('.cd-xp-bar').data('width') + '%');
 });
 </script>
+<script src="/static/js/apps/characters.js"></script>
 {% endblock %}

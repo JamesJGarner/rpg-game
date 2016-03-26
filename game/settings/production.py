@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'game.apps.spells',
     'game.apps.userprofiles',
     'game.apps.items',
+    'rest_framework',
 ]
 
 STATIC_ROOT = "/var/www/game/static"

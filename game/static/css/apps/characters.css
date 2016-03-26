@@ -132,14 +132,19 @@ input#cc-name:focus {
     margin:0;
     width:100%;
     list-style: none;
+    background: rgba(230, 230, 230, 0.18);
+    height: 100%;
+    min-height: 300px;
 }
 .cd-inventory-bag li {
-    width:50px;
-    height:50px;
-    border:1px solid #ddd;
-    margin:10px 10px 0 0;
-    float:left;
+width: 60px;
+    height: 60px;
+    margin: 0;
+    float: left;
     padding: 8px;
+    /* background: rgba(230, 230, 230, 0.18); */
+    border-bottom: 1px solid #ddd;
+    border-right: 1px solid #ddd;
 }
 
 .cd-inventory-bag h3 {
@@ -154,7 +159,84 @@ input#cc-name:focus {
 }
 
 .tabs-panel {
-    padding: 30px;
+    padding: 0;
+}
+
+.cd-spells {
+    margin: 0;
+}
+
+.cd-spells li {
+    list-style: none;
+    width: 100px;
+    height: 100px;
+    padding: 20px;
+    float:left;
+    background: rgba(230, 230, 230, 0.18);
+    cursor:pointer;
+}
+
+.cd-spell-detail {
+    margin: 0;
+}
+
+.cd-spell-sidebar {
+    float: left;
+    width: 100%;
+    min-height: 300px;
+    border-left: 1px solid #ddd;
+    padding: 20px;
+    text-align: center;
+    font-family: 'Open Sans';
+}
+
+.tabs-title > a {
+    color: #19963C;
+    font-size: 12pt;
+    font-family: 'Open Sans';
+    width: 145px;
+}
+
+.tabs-title > a:hover {
+    background: none;
+}
+
+.tabs-title > a:focus, .tabs-title > a[aria-selected='true'] {
+    background:none;
+    color: #000;
+}
+
+.cd-spell-sidebar li {
+    list-style: none;
+    text-align: center;
+}
+
+.cd-spell-sidebar li img {
+    width: 150px;
+}
+
+.cd-spell-detail li {
+    list-style: none;
+}
+
+.cd-no-padding {
+    padding: 0;
+}
+
+.cd-spell-hide {
+    display: none;
+}
+
+.cd-statistics li {
+    list-style: none;
+    margin: 0;
+    padding: 10px 0;
+    font-family: 'Open Sans';
+}
+
+.cd-statistics {
+    margin: 0;
+    padding: 20px;
 }
 
 /* character homepage */ 
