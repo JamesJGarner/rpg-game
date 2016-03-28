@@ -30,7 +30,11 @@
     <ul class="cd-inventory-bag">
         {% if character.itemacquired_set.all %}
         {% for item in character.itemacquired_set.all  %}
-        <li id="inv-{{ item.id }}"><img src="{{ item.item.icon.url }}"></li>
+        
+        <li id="inv-{{ item.id }}"  {% if item.equipped_to %}class="cd-item-hide"{% endif %}>
+          <img src="{{ item.item.icon.url }}">
+        </li>
+        
         <div id="inv-{{ item.id }}-dropdown" class="cd-spell-hide">
           <ul class="cd-spell-detail">
             <li><img src="{{ item.item.icon.url }}"></li>
@@ -92,14 +96,13 @@
             <!-- <li>{{ level_data.xp_percentage}}% Until Next Level</li> -->
             </ul>
         </div>
+            </div> <br>  <br>    <br> 
 
-</div>
+                <a href="{{ character.get_absolute_url }}/create" class="button">Start Match</a>
 
             </div>
         </div>
-        <a href="{{ character.get_absolute_url }}/create" class="button small">Start Match</a>
-        <a href="{{ character.get_absolute_url }}/shop/" class="button small right">Shop</a>
-        <a href="{{ character.get_absolute_url }}/spells/" class="button small right">Spell Book</a>
+
     </div>
     <script src="/static/js/countdown.min.js"></script>
 {% endwith %}

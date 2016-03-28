@@ -7,7 +7,7 @@ from django.core.urlresolvers import reverse
 from django.shortcuts import get_object_or_404
 from game.apps.matches.helpers import calculate_player_health, calculate_boss_health
 from game.apps.spells.models import SpellAcquired
-from game.apps.items.models import ItemAcquired
+from game.apps.items.models import ItemAcquired, Position
 
 
 class CharacterLeaderboard(ListView):
@@ -28,11 +28,16 @@ class CharacterDetail(DetailView):
         
         equipped_items =  ItemAcquired.objects.filter(character=self.object.pk, equipped_to__isnull=False)
         spells_acquired = SpellAcquired.objects.filter(character=self.object.pk)
-
+        postions = Position.objects.all()
         context['spells'] = spells_acquired
 
+        for i in postions:
+            context[i.name.replace (" ", "_").lower()] = i
+
         for i in equipped_items:
-            context[i.equipped_to.name.replace (" ", "_").lower()] = i.item
+            context["item_" + i.equipped_to.name.replace (" ", "_").lower()] = i.item.image.url
+            context[i.equipped_to.name.replace (" ", "_").lower() + "_id"] = i.id
+
 
         return context
 

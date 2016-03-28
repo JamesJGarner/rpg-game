@@ -137,14 +137,14 @@ input#cc-name:focus {
     min-height: 300px;
 }
 .cd-inventory-bag li {
-width: 60px;
+    width: 60px;
     height: 60px;
     margin: 0;
     float: left;
     padding: 8px;
-    /* background: rgba(230, 230, 230, 0.18); */
     border-bottom: 1px solid #ddd;
     border-right: 1px solid #ddd;
+    cursor: pointer;
 }
 
 .cd-inventory-bag h3 {
@@ -160,6 +160,10 @@ width: 60px;
 
 .tabs-panel {
     padding: 0;
+}
+
+.tabs-content {
+       margin-bottom: 20px;
 }
 
 .cd-spells {
@@ -183,7 +187,7 @@ width: 60px;
 .cd-spell-sidebar {
     float: left;
     width: 100%;
-    min-height: 300px;
+    min-height: 305px;
     border-left: 1px solid #ddd;
     padding: 20px;
     text-align: center;
@@ -223,9 +227,11 @@ width: 60px;
     padding: 0;
 }
 
-.cd-spell-hide {
+.cd-spell-hide, .cd-item-hide {
     display: none;
 }
+
+
 
 .cd-statistics li {
     list-style: none;
@@ -237,6 +243,16 @@ width: 60px;
 .cd-statistics {
     margin: 0;
     padding: 20px;
+}
+
+.cd-selected {
+    background-color: rgba(25, 150, 60, 0.55);
+    border-color: rgba(0, 0, 0, 0.25) !important;
+    border-style: solid !important;
+}
+
+.inv-sidebar-selected {
+    background: rgb(238, 238, 238);
 }
 
 /* character homepage */ 

@@ -1,5 +1,7 @@
 from django.db import models
 from game.apps.characters.models import Character, Class
+from django.core.exceptions import ValidationError
+
 
 class Group(models.Model):
     name = models.CharField(
@@ -100,7 +102,7 @@ class ItemAcquired(models.Model):
 
 
     def clean(self):
-
+        #raise ValidationError("test")
         # Checks to see if item is the same class as the character
         try:
             Item.objects.get(id=self.item.id, for_class=self.character.for_class)
@@ -122,3 +124,8 @@ class ItemAcquired(models.Model):
             # Check to see if item is equipped somewhere else.
             if ItemAcquired.objects.filter(character=self.character, item=self.item,  equipped_to__isnull=False).exclude(pk=self.pk):
                 raise ValidationError('This item is already equipped somewhere else.')
+
+            # Check to see if another item is equipped in that place
+
+            if ItemAcquired.objects.filter(character=self.character, equipped_to=self.equipped_to).exclude(pk=self.pk):
+                raise ValidationError('Another item is equipped here.')
