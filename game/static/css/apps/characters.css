@@ -123,7 +123,6 @@ input#cc-name:focus {
 
 .cd-character-items li {
     position: absolute;
-    border: 1px dotted #ccc;
     padding: 5px;
 }
 
