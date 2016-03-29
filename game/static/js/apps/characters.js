@@ -55,7 +55,7 @@ function ItemLookup(id) {
       }
       if (key == "position") {
         for (i in val) {
-          $('#' + String(val[i]).replace(' ', '-').toLowerCase()).addClass("cd-selected").on('click', myFunction);
+          $('#' + String(val[i]).replace(' ', '-').toLowerCase()).addClass("cd-selected").on('click', EquipItem);
         }
       }
     });
@@ -63,7 +63,7 @@ function ItemLookup(id) {
 };
 
 
-function myFunction() {
+function EquipItem() {
   var that = this;
   var form = "character=1&equipped_to=" + this.id
   $.ajax({
