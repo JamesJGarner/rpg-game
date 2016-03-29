@@ -9,7 +9,7 @@ $(".cd-spells li").on("click", function(e){
 
 $(".cd-spells li").hover(
   function() {
-    hoverid(this.id)
+      $('#sidebar').html($('#' + id + '-dropdown ul').html())
   }, function() {
   	if (selected != null) {
   		$('#sidebar').html(selected)
