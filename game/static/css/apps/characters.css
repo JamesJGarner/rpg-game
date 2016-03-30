@@ -124,6 +124,7 @@ input#cc-name:focus {
 .cd-character-items li {
     position: absolute;
     padding: 5px;
+    cursor: pointer;
 }
 
 .cd-inventory-bag {
