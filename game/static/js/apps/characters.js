@@ -119,14 +119,14 @@ function ItemLookup(id) {
 function EquipItem() {
   var form = "character=1&equipped_to=" + this.id
   var url = ItemAcquired_id;
-  ItemForm(form, url, EquipItemSuccess(this.id, url))
+  ItemForm(form, url, this.id, true)
 }
 
 
 function UnequipItem() {
   var form = "character=1&equipped_to=";
   var url = $('#' + this.id + ' img')[0].id;
-  ItemForm(form, url, UnequipItemSuccess(this.id, url))
+  ItemForm(form, url, this.id, false)
 }
 
 
@@ -144,8 +144,12 @@ function UnequipItemSuccess(id, item) {
   resetVars();
 }
 
+function EquipItemFailed(data) {
+  console.log("?")
+}
 
-function ItemForm(form, url, successFunction) {
+
+function ItemForm(form, url, equipt) {
   $.ajax({
     beforeSend: function(xhr, settings) {
       xhr.setRequestHeader("X-CSRFToken",  getCookie('csrftoken'));
@@ -153,8 +157,16 @@ function ItemForm(form, url, successFunction) {
     url: "/api/items/" + url + "/",
     type: "PATCH",
     data: form,
+    error: function(data) {
+      EquipItemFailed(data);
+    },
     success: function(data) {
-      successFunction;
+      if (equipt) {
+        EquipItemSuccess(this.id, url)
+      }
+      else {
+        UnequipItemSuccess(this.id, url)
+      }
     }
   }); 
 }
