@@ -18,4 +18,11 @@ class UserProfilePage(UpdateView):
     def get_context_data(self, **kwargs):
         context = super(UserProfilePage, self).get_context_data(**kwargs)
         context['characters'] = Character.objects.filter(user=self.object.pk)
+
+        context['wins'] = 5;
+        context['loses'] = 10;
+        context['percent_of_wins'] = "20%"
+        context['most_used_spell'] = "Fire"
+        context['total_damage_dealt'] = 500;
+        context['total_damage_taken'] = 200;
         return context
