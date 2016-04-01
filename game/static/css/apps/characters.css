@@ -108,6 +108,10 @@ input#cc-name:focus {
     margin-bottom: 43px;
 }
 
+.cd-main h2 small {
+    font-size: 12pt;
+}
+
 .cd-character-items {
     list-style: none;
     float: left;
