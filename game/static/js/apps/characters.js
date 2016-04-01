@@ -144,8 +144,11 @@ function UnequipItemSuccess(id, item) {
   resetVars();
 }
 
-function EquipItemFailed(data) {
-  console.log("?")
+function EquipItemFailed(xhr, status, error) {
+  //TODO Make the box go red then disappear and show error message at the bottom of the character for a few seconds.
+  var text = JSON.parse(xhr.responseText);
+  $('#error').remove()
+  $('.cd-character-items').append("<p id='error'>" + text.non_field_errors + "</p>");
 }
 
 
@@ -157,8 +160,8 @@ function ItemForm(form, url, equipt) {
     url: "/api/items/" + url + "/",
     type: "PATCH",
     data: form,
-    error: function(data) {
-      EquipItemFailed(data);
+    error: function(xhr, status, error) {
+      EquipItemFailed(xhr, status, error);
     },
     success: function(data) {
       if (equipt) {
