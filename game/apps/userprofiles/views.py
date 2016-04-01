@@ -4,6 +4,8 @@ from .forms import UserProfileForm
 from .models import UserProfile
 from django.contrib.auth.models import User
 from game.apps.characters.models import Character
+from game.apps.matches.models import Match
+
 
 class UserProfilePage(UpdateView):
     model = UserProfile
@@ -19,7 +21,7 @@ class UserProfilePage(UpdateView):
         context = super(UserProfilePage, self).get_context_data(**kwargs)
         context['characters'] = Character.objects.filter(user=self.object.pk)
 
-        context['wins'] = 5;
+        context['wins'] = Match.objects.filter(character=self.object.pk, enemy_health=0).count()
         context['loses'] = 10;
         context['percent_of_wins'] = "20%"
         context['most_used_spell'] = "Fire"
