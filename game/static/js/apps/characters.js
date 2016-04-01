@@ -117,14 +117,14 @@ function ItemLookup(id) {
 
 
 function EquipItem() {
-  var form = "character=1&equipped_to=" + this.id
+  var form = this.id
   var url = ItemAcquired_id;
   ItemForm(form, url, this.id, true)
 }
 
 
 function UnequipItem() {
-  var form = "character=1&equipped_to=";
+  var form = "";
   var url = $('#' + this.id + ' img')[0].id;
   ItemForm(form, url, this.id, false)
 }
@@ -144,10 +144,19 @@ function UnequipItemSuccess(id, item) {
   resetVars();
 }
 
-function EquipItemFailed(xhr, status, error) {
+function EquipItemFailed(xhr, status, error, form) {
   //TODO Make the box go red then disappear and show error message at the bottom of the character for a few seconds.
+  console.log(form)
   var text = JSON.parse(xhr.responseText);
   $('#error').remove()
+  $('.cd-character-items li').removeClass("cd-selected")
+  $('#' + form).addClass("cd-error")
+
+  $('#' + form).fadeOut("slow", function() {
+      $(this).removeClass("cd-error");
+  });
+
+
   $('.cd-character-items').append("<p id='error'>" + text.non_field_errors + "</p>");
 }
 
@@ -159,9 +168,9 @@ function ItemForm(form, url, equipt) {
     },
     url: "/api/items/" + url + "/",
     type: "PATCH",
-    data: form,
+    data: "character=1&equipped_to=" + form,
     error: function(xhr, status, error) {
-      EquipItemFailed(xhr, status, error);
+      EquipItemFailed(xhr, status, error, form);
     },
     success: function(data) {
       if (equipt) {

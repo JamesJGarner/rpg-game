@@ -249,6 +249,10 @@ input#cc-name:focus {
     background-color: rgba(25, 150, 60, 0.34);
 }
 
+.cd-error {
+    background-color: red;
+}
+
 .inv-sidebar-selected {
     background: rgb(238, 238, 238);
 }
