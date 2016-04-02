@@ -22,7 +22,7 @@ class UserProfilePage(UpdateView):
         context['characters'] = Character.objects.filter(user=self.object.pk)
 
         context['wins'] = Match.objects.filter(character=self.object.pk, enemy_health=0).count()
-        context['loses'] = 10;
+        context['loses'] = Match.objects.filter(character=self.object.pk, character_health=0).count();
         context['percent_of_wins'] = "20%"
         context['most_used_spell'] = "Fire"
         context['total_damage_dealt'] = 500;
