@@ -5,7 +5,7 @@ from .models import UserProfile
 from django.contrib.auth.models import User
 from game.apps.characters.models import Character
 from game.apps.matches.models import Match, Attack
-from game.apps.spells.models import SpellAcquired
+from game.apps.spells.models import SpellAcquired, Spell
 
 class UserProfilePage(UpdateView):
     model = UserProfile
@@ -32,13 +32,17 @@ class UserProfilePage(UpdateView):
             total_damage_dealt += attack.damage_dealt
             total_damage_taken += attack.damage_taken
 
-        for spell in SpellAcquired.objects.filter(character=self.object.pk):
-            print spell
+        spell_used_list = {}
+        for element in SpellAcquired.objects.filter(character=self.object.pk):
+            spell_used_list[element.spell.name] = Attack.objects.filter(match__in=matches, spell=element.spell).count()
+
+        most_used = max(spell_used_list, key=spell_used_list.get)
+        most_used_spell = Spell.objects.get(name=most_used)
 
         context['wins'] = wins
         context['loses'] = loses
         context['percent_of_wins'] = str(round(float(wins - loses) / wins * 100, 1)) + "%";
-        context['most_used_spell'] = "Fire"
+        context['most_used_spell'] = most_used_spell
         context['total_damage_dealt'] = total_damage_dealt
         context['total_damage_taken'] = total_damage_taken
         return context
