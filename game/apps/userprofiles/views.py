@@ -4,7 +4,7 @@ from .forms import UserProfileForm
 from .models import UserProfile
 from django.contrib.auth.models import User
 from game.apps.characters.models import Character
-from game.apps.matches.models import Match
+from game.apps.matches.models import Match, Attack
 
 
 class UserProfilePage(UpdateView):
@@ -21,10 +21,21 @@ class UserProfilePage(UpdateView):
         context = super(UserProfilePage, self).get_context_data(**kwargs)
         context['characters'] = Character.objects.filter(user=self.object.pk)
 
-        context['wins'] = Match.objects.filter(character=self.object.pk, enemy_health=0).count()
-        context['loses'] = Match.objects.filter(character=self.object.pk, character_health=0).count();
-        context['percent_of_wins'] = "20%"
+        wins = Match.objects.filter(character=self.object.pk, enemy_health=0).count()
+        loses = Match.objects.filter(character=self.object.pk, character_health=0).count();
+
+        total_damage_dealt = 0
+        total_damage_taken = 0
+
+        matches = Match.objects.filter(character=self.object.pk)
+        for attack in Attack.objects.filter(match__in=matches):
+            total_damage_dealt += attack.damage_dealt
+            total_damage_taken += attack.damage_taken
+
+        context['wins'] = wins
+        context['loses'] = loses
+        context['percent_of_wins'] = str(round(float(wins - loses) / wins * 100, 1)) + "%";
         context['most_used_spell'] = "Fire"
-        context['total_damage_dealt'] = 500;
-        context['total_damage_taken'] = 200;
+        context['total_damage_dealt'] = total_damage_dealt
+        context['total_damage_taken'] = total_damage_taken
         return context
