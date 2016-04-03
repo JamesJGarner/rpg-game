@@ -10,7 +10,6 @@ from rest_framework import routers
 from game.apps.items import views
 
 router = routers.DefaultRouter()
-router.register(r'item', views.ItemViewSet)
 router.register(r'items', views.ItemAcquiredViewSet)
 
 

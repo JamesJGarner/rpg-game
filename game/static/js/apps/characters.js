@@ -107,7 +107,7 @@ function resetVars() {
 
 
 function ItemLookup(id) {
-  $.getJSON( "/api/item/" + id, function( data ) {
+  $.getJSON( "/api/items/" + id, function( data ) {
     ItemAcquired = data;
     for (i in data.item.position) {
       $('#' + String(data.item.position[i]).replace(' ', '-').toLowerCase()).addClass("cd-selected").on('click', EquipItem);

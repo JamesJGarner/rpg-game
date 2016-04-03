@@ -5,16 +5,6 @@ from django.http import HttpResponse
 from rest_framework.permissions import IsAuthenticated
 
 
-class ItemViewSet(viewsets.ReadOnlyModelViewSet):
-    """
-    API endpoint that lets you see all the items.
-    """
-    #TODO: Add later that it only returns the items they have (more for the point of view that a user can't see all the items in the system)
-    queryset = ItemAcquired.objects.all()
-    serializer_class = ItemSerializer
-    permission_classes = (IsAuthenticated,)
-
-
 class ItemAcquiredViewSet(viewsets.ModelViewSet):
     serializer_class = ItemAcquiredSerializer
     queryset = ItemAcquired.objects.all()
