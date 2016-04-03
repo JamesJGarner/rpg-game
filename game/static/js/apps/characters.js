@@ -119,30 +119,16 @@ function ItemLookup(id) {
 function EquipItem() {
   var form = this.id
   var url = ItemAcquired_id;
-  ItemForm(form, url, this.id, true)
+  EquipItemForm(form, url, this.id)
 }
 
 
 function UnequipItem() {
   var form = "";
   var url = $('#' + this.id + ' img')[0].id;
-  ItemForm(form, url, this.id, false)
+  UnequipItemForm(form, url, this.id)
 }
 
-
-function EquipItemSuccess(id, item) {
-  $('#inv-' + item).addClass("cd-item-hide");
-  $('#'+ ItemAcquired.equipped_to + ' img').attr('src', "");
-  $('#' + id + ' img').attr('src', ItemAcquired.item.image).attr('id', item);
-  resetVars(); 
-}
-
-
-function UnequipItemSuccess(id, item) {
-  $('#'+ id + ' img').attr('src', "").attr('id', "");
-  $('#inv-' + item).removeClass("cd-item-hide");
-  resetVars();
-}
 
 function EquipItemFailed(xhr, status, error, form) {
   //TODO Make the box go red then disappear and show error message at the bottom of the character for a few seconds.
@@ -155,13 +141,11 @@ function EquipItemFailed(xhr, status, error, form) {
   $('#' + form).fadeOut("slow", function() {
       $(this).removeClass("cd-error");
   });
-
-
   $('.cd-character-items').append("<p id='error'>" + text.non_field_errors + "</p>");
 }
 
 
-function ItemForm(form, url, equipt) {
+function EquipItemForm(form, url, item) {
   $.ajax({
     beforeSend: function(xhr, settings) {
       xhr.setRequestHeader("X-CSRFToken",  getCookie('csrftoken'));
@@ -172,17 +156,33 @@ function ItemForm(form, url, equipt) {
     error: function(xhr, status, error) {
       EquipItemFailed(xhr, status, error, form);
     },
-    success: function(data) {
-      if (equipt) {
-        EquipItemSuccess(this.id, url)
-      }
-      else {
-        UnequipItemSuccess(this.id, url)
-      }
+    success: function() {
+      $('#inv-' + url).addClass("cd-item-hide");
+      $('#'+ ItemAcquired.equipped_to + ' img').attr('src', "");
+      $('#' + item + ' img').attr('src', ItemAcquired.item.image).attr('id', url);
+      resetVars(); 
     }
   }); 
 }
+ 
 
+function UnequipItemForm(form, url, item) {
+  $.ajax({
+    beforeSend: function(xhr, settings) {
+      xhr.setRequestHeader("X-CSRFToken",  getCookie('csrftoken'));
+    },
+    url: "/api/items/" + url + "/",
+    type: "PATCH",
+    data: "character=1&equipped_to=" + form,
+    error: function(xhr, status, error) {
+    },
+    success: function() {
+      $('#'+ item + ' img').attr('src', "").attr('id', "");
+      $('#inv-' + url).removeClass("cd-item-hide");
+      resetVars();
+    }
+  }); 
+}
 
 $( document ).on( 'keydown', function ( e ) {
     if ( e.keyCode === 27 ) {
