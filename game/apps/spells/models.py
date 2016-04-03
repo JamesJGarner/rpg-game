@@ -7,6 +7,7 @@ class Spell(models.Model):
 
     name = models.CharField(
         max_length=140,
+        unique=True,
     )
 
     for_class = models.ForeignKey(
