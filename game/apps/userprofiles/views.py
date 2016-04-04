@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 from game.apps.characters.models import Character
 from game.apps.matches.models import Match, Attack
 from game.apps.spells.models import SpellAcquired, Spell
-from PIL import Image, ImageDraw
+from PIL import Image, ImageDraw, ImageOps
 from random import randint
 from django.http import HttpResponse
 from django.template.loader import render_to_string
@@ -55,10 +55,16 @@ class UserProfilePage(UpdateView):
 
 def chart(request):
     media = "game/media/items/"
-    background = Image.open("game/static/img/character-type/wizard.png")
 
-    foreground = Image.open(media + "hat_dX3vF3y.png")
-    background.paste(foreground, (50, -120), foreground)
+    background = Image.open("game/static/img/character-type/wizard.png")
+    background = ImageOps.expand(background,border=80)
+
+
+    hat = Image.open(media + "hat-1.png")
+    background.paste(hat, (200, 27), hat)
+
+    sword = Image.open(media + "sword-mounted_l9Rz3r8.png")
+    background.paste(sword, (55, 27), sword)
 
 
     response = HttpResponse(content_type="image/png")
