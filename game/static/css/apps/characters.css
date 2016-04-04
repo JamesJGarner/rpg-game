@@ -298,7 +298,7 @@ ul.character-listing li a {
 }
 
 .character-listing li img {
-    width: 50%;
+    width: 100%;
     float: left;
     margin-left: 10px;
 }
@@ -316,4 +316,10 @@ ul.character-listing li a {
     padding: 20px;
     float: left;
     width: 100%;
+}
+
+.character-listing-image {
+    float: left;
+    width: 50%;
+    min-height: 100px;
 }
