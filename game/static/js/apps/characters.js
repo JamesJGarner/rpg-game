@@ -137,10 +137,12 @@ function EquipItemFailed(xhr, status, error, form) {
   $('#error').remove()
   $('.cd-character-items li').removeClass("cd-selected")
   $('#' + form).addClass("cd-error")
+  setTimeout(
+  function() {
+  $('#' + form).removeClass("cd-error")
+  },
+  600);
 
-  $('#' + form).fadeOut("slow", function() {
-      $(this).removeClass("cd-error");
-  });
   $('.cd-character-items').append("<p id='error'>" + text.non_field_errors + "</p>");
 }
 
