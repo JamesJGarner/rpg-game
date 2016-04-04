@@ -8,6 +8,9 @@ from django.shortcuts import get_object_or_404
 from game.apps.matches.helpers import calculate_player_health, calculate_boss_health
 from game.apps.spells.models import SpellAcquired
 from game.apps.items.models import ItemAcquired, Position
+from PIL import Image, ImageDraw, ImageOps
+from random import randint
+from django.http import HttpResponse
 
 
 class CharacterLeaderboard(ListView):
@@ -87,3 +90,26 @@ class CharacterCreate(CreateView):
 
     def get_success_url(self):
         return reverse('character:detail', kwargs={'pk': self.object.pk})
+
+
+def CharacterImage(request, pk):
+
+    media = "game/media/items/"
+
+    background = Image.open("game/static/img/character-type/wizard.png")
+    background = ImageOps.expand(background,border=80)
+
+
+    hat = Image.open(media + "hat-1.png")
+    background.paste(hat, (200, 27), hat)
+
+    sword = Image.open(media + "sword-mounted_l9Rz3r8.png")
+    background.paste(sword, (55, 27), sword)
+
+
+    response = HttpResponse(content_type="image/png")
+    background.save(response, "PNG")
+
+
+    return response
+
