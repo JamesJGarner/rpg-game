@@ -1,4 +1,4 @@
-from django.views.generic import UpdateView
+from django.views.generic import UpdateView, DetailView
 from django.views.generic.edit import ModelFormMixin
 from .forms import UserProfileForm
 from .models import UserProfile
@@ -53,7 +53,8 @@ class UserProfilePage(UpdateView):
         return context
 
 
-def chart(request):
+def CharacterImage(request, pk):
+
     media = "game/media/items/"
 
     background = Image.open("game/static/img/character-type/wizard.png")
