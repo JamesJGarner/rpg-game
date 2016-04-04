@@ -6,6 +6,10 @@ from django.contrib.auth.models import User
 from game.apps.characters.models import Character
 from game.apps.matches.models import Match, Attack
 from game.apps.spells.models import SpellAcquired, Spell
+from PIL import Image, ImageDraw
+from random import randint
+from django.http import HttpResponse
+
 
 class UserProfilePage(UpdateView):
     model = UserProfile
@@ -46,3 +50,14 @@ class UserProfilePage(UpdateView):
         context['total_damage_dealt'] = total_damage_dealt
         context['total_damage_taken'] = total_damage_taken
         return context
+
+
+def chart(request):
+    img = Image.new("RGB", (300,300), "#FFFFFF")
+    data = [(i,randint(100,200)) for i in range(0,300,10)]
+    draw = ImageDraw.Draw(img)
+    draw.polygon(data, fill="#000000")
+    response = HttpResponse(content_type="image/png")
+    img.save(response, "PNG")
+    return response
+
