@@ -94,9 +94,9 @@ class CharacterCreate(CreateView):
 
 def CharacterImage(request, pk):
 
+    character =Character.objects.get(id=pk)
     media = "game/media/items/"
-
-    background = Image.open("game/static/img/character-type/wizard.png")
+    background = Image.open("game/static/img/character-type/" + character.for_class.name + ".png")
     background = ImageOps.expand(background,border=80)
 
 
