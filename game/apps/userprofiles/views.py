@@ -9,6 +9,7 @@ from game.apps.spells.models import SpellAcquired, Spell
 from PIL import Image, ImageDraw
 from random import randint
 from django.http import HttpResponse
+from django.template.loader import render_to_string
 
 
 class UserProfilePage(UpdateView):
@@ -53,11 +54,16 @@ class UserProfilePage(UpdateView):
 
 
 def chart(request):
-    img = Image.new("RGB", (300,300), "#FFFFFF")
-    data = [(i,randint(100,200)) for i in range(0,300,10)]
-    draw = ImageDraw.Draw(img)
-    draw.polygon(data, fill="#000000")
+    media = "game/media/items/"
+    background = Image.open("game/static/img/character-type/wizard.png")
+
+    foreground = Image.open(media + "hat_dX3vF3y.png")
+    background.paste(foreground, (50, -120), foreground)
+
+
     response = HttpResponse(content_type="image/png")
-    img.save(response, "PNG")
+    background.save(response, "PNG")
+
+
     return response
 
