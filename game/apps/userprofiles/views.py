@@ -20,21 +20,22 @@ class UserProfilePage(UpdateView):
 
     def get_context_data(self, **kwargs):
         context = super(UserProfilePage, self).get_context_data(**kwargs)
-        context['characters'] = Character.objects.filter(user=self.object.pk)
+        characters = Character.objects.filter(user=self.object.pk)
+        context['characters'] = characters
 
-        wins = Match.objects.filter(character=self.object.pk, enemy_health=0).count()
-        loses = Match.objects.filter(character=self.object.pk, character_health=0).count();
+        wins = Match.objects.filter(character__in=characters, enemy_health=0).count()
+        loses = Match.objects.filter(character__in=characters, character_health=0).count();
 
         total_damage_dealt = 0
         total_damage_taken = 0
 
-        matches = Match.objects.filter(character=self.object.pk)
+        matches = Match.objects.filter(character__in=characters)
         for attack in Attack.objects.filter(match__in=matches):
             total_damage_dealt += attack.damage_dealt
             total_damage_taken += attack.damage_taken
 
         spell_used_list = {}
-        for element in SpellAcquired.objects.filter(character=self.object.pk):
+        for element in SpellAcquired.objects.filter(character__in=characters):
             spell_used_list[element.spell.name] = Attack.objects.filter(match__in=matches, spell=element.spell).count()
 
         most_used = max(spell_used_list, key=spell_used_list.get)
