@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'game.apps.spells',
     'game.apps.userprofiles',
     'game.apps.items',
+    'game.apps.messaging',
     'rest_framework',
 ]
 
