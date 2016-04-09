@@ -20,5 +20,5 @@ class Message(models.Model):
     date = models.DateTimeField()
 
 
-    def unicode(self):
-        return self.from_user
+    def __unicode__(self):
+        return self.from_user.username
