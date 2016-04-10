@@ -18,6 +18,7 @@ urlpatterns = [
 	url(r'^api/', include(router.urls)),
     url(r'^match/', include('game.apps.matches.urls',  namespace="match")),
     url(r'^character/', include('game.apps.characters.urls', namespace="character")),
+    url(r'^messages/', include('game.apps.messaging.urls', namespace="messaging")),
     url(r'^', include('game.apps.userprofiles.urls', namespace="userprofile")),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', Homepage.as_view(), name='homepage'),
