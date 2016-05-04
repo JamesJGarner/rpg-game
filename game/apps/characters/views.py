@@ -101,10 +101,17 @@ def CharacterImage(request, pk):
 
     equipped_items = ItemAcquired.objects.filter(character=pk, equipped_to__isnull=False)
 
+
     item_mapping = {
         'Head': (200, 27),
         'Left Hand': (55, 27),
     }
+
+    hat = Image.open(media + "hat_nxY7RAW.png")
+    background.paste(hat, (200, 27), hat)
+
+    sword = Image.open(media + "sword-mounted_l9Rz3r8.png")
+    background.paste(sword, (55, 27), sword)
 
     for i in equipped_items:
         item_image = Image.open("game" + i.item.image.url)

@@ -10,6 +10,80 @@
 {% endif %}
 {% endif %}
 
+<a href="#" onclick="EndTurn()" style="
+    background: #19963C;
+    color: #FFF;
+    position: absolute;
+    right: 0;
+    top: 35%;
+    padding: 20px 45px;
+">End Turn</a>
+<div id="cards">
+<div class="card">
+    <div class="face front">
+        <img src="http://localhost:8000/media/spells/spell.png">
+        <h4>Fireball</h4>
+    </div>
+    <div class="face back"></div>
+</div>
+
+<div class="card">
+    <div class="face front">
+        <img src="http://localhost:8000/media/spells/spell.png">
+        <h4>Fireball</h4>
+    </div>
+    <div class="face back"></div>
+</div>
+
+<div class="card">
+    <div class="face front">
+        <img src="http://localhost:8000/media/spells/spell.png">
+        <h4>Fireball</h4>
+    </div>
+    <div class="face back"></div>
+</div>
+</div>
+<div class="bottompanel">
+ <div class="large-2 columns">
+    <img src="http://localhost:8000/character/1/image/" class="characterimg">
+ </div>
+
+  <div class="large-4 columns">
+  
+    <div class="xcontain">
+        <a><img src="/static/img/castspell.png"></a>
+        <a onclick="ChanceSpell()"><img src="/static/img/chance.png"></a>
+        <a><img src="/static/img/cardpickup.png"></a>
+    </div>
+
+
+
+</div>
+    <div class="large-3 columns">
+        <div class="spellpreview">
+        <img src="http://localhost:8000/media/spells/spell.png"><h4>Fireball</h4>
+        </div>
+
+        <ul class="spells">
+        <li class="selected"><img src="http://localhost:8000/media/spells/spell.png"></li>
+        <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li></ul>
+    </div>
+    <div class="large-1 columns">
+        <ul id="manor">
+            <li></li><li></li><li></li><li></li>
+        </ul>
+    </div>
+
+    <div class="large-2 columns">
+        <div class="health">
+            <img src="/static/img/heart.png">
+            <h2><small>Health</small> {{ match.character_health }}</h2>
+        </div>
+    </div>
+</div>
+</div>
+
+<!--
 <div class="md-heading">
     <div class="row">
         <div class="large-12 columns">
@@ -82,7 +156,42 @@
     <div class="large-5 columns">
 
     </div>
-
+-->
 {% endblock content %}
 {% block js %}
+<script type="text/javascript">
+
+var manor = 12;
+UpdateManor(); 
+function ChanceSpell() {
+    var newmanor = manor - 4;
+    if (newmanor >= 0){
+        manor -= 4;
+        PlaceCard();
+    }
+    else {
+        alert("Sorry you don't have enough manor");
+    }
+    UpdateManor();
+}
+
+function UpdateManor() {
+    var html = []
+    for (var i = 0; i < manor; i++) { 
+    html.push("<li></li>");
+    }
+    $('#manor').html(html) 
+}
+
+function PlaceCard() {
+
+    var html = '<div class="card"><div class="face front"></div><div class="face back"></div></div>'
+    $('#cards').append(html);
+}
+
+function EndTurn() {
+    $('#cards div').addClass("front");
+}
+
+</script>
 {% endblock %}
