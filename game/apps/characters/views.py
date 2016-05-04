@@ -100,7 +100,7 @@ def CharacterImage(request, pk):
     background = ImageOps.expand(background,border=80)
 
 
-    hat = Image.open(media + "hat-1.png")
+    hat = Image.open(media + "hat_nxY7RAW.png")
     background.paste(hat, (200, 27), hat)
 
     sword = Image.open(media + "sword-mounted_l9Rz3r8.png")
