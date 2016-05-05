@@ -3,7 +3,17 @@
 
 {% if condition %}
 {% if condition == "win" %}
-    <center><h1>You Won!</h1></center>
+<div class="wrap">
+    <div class="cube">
+        <div class="front"></div>
+        <div class="back"></div>
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+    </div>
+</div>
+
 {% endif %}
 {% if condition == "loose" %}
    <center> <h1>You lost!</h1></center>
